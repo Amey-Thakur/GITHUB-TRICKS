@@ -11,7 +11,7 @@
 
 <br>
 
-[![Tricks](https://img.shields.io/badge/Tricks-300+-3949AB?logo=github&logoColor=white)](#start-here)
+[![Tricks](https://img.shields.io/badge/Tricks-350+-3949AB?logo=github&logoColor=white)](#start-here)
 [![Curated by](https://img.shields.io/badge/Curated_by-Amey_Thakur-0969DA?logo=github&logoColor=white)](https://github.com/Amey-Thakur)
 [![Status](https://img.shields.io/badge/Status-Corrections_welcome-2EA043?logo=github&logoColor=white)](https://github.com/Amey-Thakur/GITHUB-TRICKS/issues/new)
 [![License](https://img.shields.io/badge/License-MIT-lightgrey)](LICENSE)
@@ -28,7 +28,7 @@
 
 **Automate** &nbsp; [gh CLI](#the-gh-cli) &nbsp;·&nbsp; [API](#the-api) &nbsp;·&nbsp; [Git](#git)
 
-**Run** &nbsp; [Codespaces](#codespaces) &nbsp;·&nbsp; [Dead tricks](#dead-tricks)
+**Run** &nbsp; [Codespaces](#codespaces) &nbsp;·&nbsp; [Copilot](#copilot) &nbsp;·&nbsp; [Dead tricks](#dead-tricks)
 
 <br>
 
@@ -915,7 +915,7 @@ git bisect run ./test.sh          # exit 125 means "skip", not "bad"
 
 ### Run
 
-*environments, and what they quietly cost*
+*environments and agents, and what they quietly cost*
 
 </div>
 
@@ -968,6 +968,152 @@ https://codespaces.new/OWNER/REPO/tree/BRANCH
 
 <br>
 
+## Copilot
+
+> [!IMPORTANT]
+> **This section ages faster than any other.** Copilot ships breaking changes monthly: premium requests became AI credits on 1 June 2026, `gh copilot suggest` died in October 2025, and six models retire on 1 September 2026. Everything below was read against the docs on **22 August 2026**. Check the date before you trust it.
+
+### Instruction files, and which ones actually apply
+
+```
+.github/copilot-instructions.md          one file, repository-wide
+.github/instructions/NAME.instructions.md  path-scoped, applyTo is required
+AGENTS.md                                one or many, nearest in the tree wins
+CLAUDE.md  GEMINI.md                     repository root only, no nesting
+```
+
+```yaml
+---
+applyTo: "src/**/*.ts,test/**/*.ts"
+excludeAgent: code-review          # or: cloud-agent
+---
+```
+
+> [!WARNING]
+> Omit `applyTo` and the file does nothing at all. `excludeAgent` is the only way to stop authoring guidance from becoming a wall of review nitpicks.
+>
+> On github.com, path-specific instructions apply to **only two features**: the cloud agent and code review. Copilot Chat on github.com ignores them entirely.
+>
+> In VS Code, every matching instruction file is combined **in no guaranteed order**, so two files that disagree produce different results run to run.
+
+### The cloud agent
+
+```yaml
+# .github/workflows/copilot-setup-steps.yml
+jobs:
+  copilot-setup-steps:        # the job name is mandatory
+    runs-on: ubuntu-latest
+    timeout-minutes: 59       # 59 is the hard ceiling
+    steps:
+      - uses: actions/checkout@v5
+      - run: npm ci
+```
+
+Only six keys are honoured inside that job: `steps`, `permissions`, `runs-on`, `services`, `snapshot` and `timeout-minutes`. Anything else, including `env`, `container`, `strategy` and `if`, is **silently ignored**.
+
+> [!CAUTION]
+> **A failing setup step does not fail the run.** Copilot skips the remaining setup steps and starts coding anyway, in a half-built environment, which is why its output can be confidently wrong rather than obviously broken.
+
+> [!NOTE]
+> The agent pushes to exactly one branch, either the pull request you called it from or a new `copilot/` branch, never the default. Two things then block full automation: workflows do not run until someone with write access approves them, and **the person who asked for the pull request cannot approve it**.
+
+```bash
+gh api --method POST /agents/repos/{owner}/{repo}/tasks -f prompt='Fix the flaky test'
+```
+
+> [!WARNING]
+> The agent tasks API accepts **user tokens only**. GitHub App installation tokens, the normal way to build a bot, are rejected outright.
+>
+> Its internet allowlist moved out of Actions variables into Settings, Copilot, Internet access. The widely copied "set an Actions variable" advice is stale.
+>
+> MCP secrets must be prefixed `COPILOT_MCP_`. A correctly written secret under any other name is simply invisible.
+
+### Code review
+
+```
+.github/workflows/copilot-code-review.yml   its own setup file, separate from the agent's
+```
+
+> [!TIP]
+> Almost nobody knows that file exists, which is why Copilot's review comments so often miss type information: without it, reviews run with **no project dependencies installed**, so it cannot resolve your imports.
+
+| Belief | Reality |
+|---|---|
+| Copilot can approve or block a pull request | It always leaves a **Comment** review. It never counts toward required approvals and never blocks a merge |
+| There is a `copilot-review-instructions.md` | No such path exists. It reads `copilot-instructions.md`, `instructions/**`, `AGENTS.md`, and since 17 July 2026 `REVIEW.md`, `CLAUDE.md` and `GEMINI.md` |
+| Automatic review is a repository checkbox | It is a **ruleset**: Settings, Rules, "Automatically request Copilot code review" |
+| It re-reviews after you push fixes | Only with "Review new pushes" enabled. Otherwise it reviews once and never looks again |
+| Review is covered by your Copilot bill | Since 1 June 2026 it also **burns Actions minutes** on private repositories. That is dual billing |
+
+Effort levels went generally available on 7 August 2026 and were renamed: **Lite** (the default) costs roughly $0.05 to $1 in credits per review, **Balanced** routes to a higher-reasoning model at roughly $0.25 to $5.
+
+### The GitHub MCP server
+
+```
+https://api.githubcopilot.com/mcp/            context, repos, issues, pull_requests, users
+https://api.githubcopilot.com/mcp/x/all       every toolset
+https://api.githubcopilot.com/mcp/readonly    read-only
+```
+
+```
+X-MCP-Toolsets: repos,issues
+X-MCP-Readonly: true
+X-MCP-Lockdown: true
+```
+
+> [!CAUTION]
+> The default URL is **not** everything. Teams wire up `/mcp/`, find no Actions or code-scanning tools, and conclude they do not exist.
+>
+> `X-MCP-Lockdown` exists because public issue and pull request bodies are attacker-controlled text flowing straight into your agent's context. That is a prompt-injection vector, and lockdown filters it.
+
+Self-hosting with `ghcr.io/github/github-mcp-server` gives you `GITHUB_TOOLSETS` and `GITHUB_READ_ONLY`, but `copilot_spaces` and `github_support_docs_search` are remote-only and will never appear.
+
+### The CLI
+
+> [!CAUTION]
+> **`gh copilot suggest` and `gh copilot explain` are dead**, retired 25 October 2025. This is the most dangerous stale tip in the area, because `gh copilot` still exists: since 21 January 2026 it is a *launcher* for the agentic Copilot CLI, so the command runs and the subcommands do not.
+
+```bash
+npm install -g @github/copilot     # Node 22+
+```
+
+```
+/every 1h run tests          recurring prompts, scoped to this session
+/after 30m remind me
+/chronicle standup           mines your own session history
+/model                       Auto routes per task, and the pool changes over time
+/sandbox                     filesystem, network and capability limits
+```
+
+Configuration lives in `~/.copilot`, relocatable with `COPILOT_HOME`. Put preferences in `settings.json`: `config.json` is auto-managed state and gets overwritten.
+
+### What it costs now
+
+> [!WARNING]
+> **Premium requests no longer exist.** Since 1 June 2026 Copilot bills **AI credits** at 1 credit = $0.01. Pro is $10 base plus $5 flex, so 1,500 credits. The behaviour everyone relied on is gone: you can no longer exhaust your quota and keep working on an included model, because the free-model fallback was removed.
+
+Code completions and next edit suggestions cost **zero credits** and stay unlimited on every paid plan.
+
+> [!NOTE]
+> Free Copilot Pro for open-source maintainers is re-evaluated **monthly**, so a dip in your project's popularity can remove it mid-workflow, and those granted it cannot cancel it.
+
+### Retired, and worth knowing
+
+| Gone | When |
+|---|---|
+| GitHub App-based Copilot Extensions | Switched off 10 November 2025. MCP is the replacement |
+| GitHub Models: playground, catalog, inference API, BYOK | Fully retired 30 July 2026, existing customers included |
+| Copilot Workspace | Discontinued as a research preview. Its ideas became the cloud agent |
+| `.chatmode.md` custom chat modes | Renamed to `.agent.md` custom agents. Old files half-work, with no sunset date |
+| `mode:` in prompt-file frontmatter | Now `agent:`, which also gained a `plan` value |
+| `infer` in agent files | Retired for `disable-model-invocation`. Old files are silently ineffective |
+| `used_copilot_coding_agent` metrics field | Removed 1 August 2026 for `used_copilot_cloud_agent` |
+
+> [!CAUTION]
+> Six models retire on **1 September 2026**: Gemini 3.1 Pro, Claude Opus 4.5 and 4.6, Claude Sonnet 4.5 and 4.6, and Raptor Mini. Anything pinning a model by name, `model:` in a prompt file, `--model` in a script, an API call, **breaks on that date** rather than silently upgrading.
+
+<br>
+
 ---
 
 <div align="center">
@@ -1006,6 +1152,11 @@ Every list still repeats these. None of them work.
 | Tasklist blocks | Retired |
 | `actions/attest-build-provenance` | Now a wrapper. Call `actions/attest` |
 | The dispatch API returns 204 | Returns the run id, since 2026-03-10 |
+| `gh copilot suggest` / `explain` | Retired 25 October 2025. `gh copilot` now launches the agentic CLI instead |
+| "You get N premium requests" | Premium requests became AI credits on 1 June 2026, and the free-model fallback is gone |
+| Copilot Extensions (GitHub Apps) | Switched off 10 November 2025. Build an MCP server |
+| GitHub Models | Fully retired 30 July 2026 |
+| `.chatmode.md`, `mode:`, `infer` | Renamed to `.agent.md`, `agent:`, `disable-model-invocation` |
 
 <br>
 
