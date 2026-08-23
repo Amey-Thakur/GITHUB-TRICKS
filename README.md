@@ -175,9 +175,9 @@ curl -X PURGE https://camo.githubusercontent.com/HASH
 
 <div align="center">
 
-### Browse
+# Browse
 
-*moving around the site itself*
+**moving around the site itself**
 
 <sub>`CAPITALS` are placeholders to replace &nbsp;·&nbsp; `Amey-Thakur/GITHUB-TRICKS` is this repository, swap in your own &nbsp;·&nbsp; `{owner}` in a `gh` command is literal</sub>
 
@@ -398,9 +398,9 @@ saved:                           type this in the search bar for saved queries
 
 <div align="center">
 
-### Build
+# Build
 
-*your repository, and what it does behind your back*
+**your repository, and what it does behind your back**
 
 <sub>`CAPITALS` are placeholders to replace &nbsp;·&nbsp; `Amey-Thakur/GITHUB-TRICKS` is this repository, swap in your own &nbsp;·&nbsp; `{owner}` in a `gh` command is literal</sub>
 
@@ -543,9 +543,9 @@ gh attestation verify ./app -R OWNER/REPO \
 
 <div align="center">
 
-### Write
+# Write
 
-*Markdown, and the page people actually read*
+**Markdown, and the page people actually read**
 
 <sub>`CAPITALS` are placeholders to replace &nbsp;·&nbsp; `Amey-Thakur/GITHUB-TRICKS` is this repository, swap in your own &nbsp;·&nbsp; `{owner}` in a `gh` command is literal</sub>
 
@@ -839,9 +839,9 @@ Social preview images are 1280 × 640 and must be under 1 MB, and the upload ref
 
 <div align="center">
 
-### Automate
+# Automate
 
-*the terminal, the API, and Git itself*
+**the terminal, the API, and Git itself**
 
 <sub>`CAPITALS` are placeholders to replace &nbsp;·&nbsp; `Amey-Thakur/GITHUB-TRICKS` is this repository, swap in your own &nbsp;·&nbsp; `{owner}` in a `gh` command is literal</sub>
 
@@ -1146,9 +1146,9 @@ Every closed pull request keeps its `/head` ref forever, while only 177 still ha
 
 <div align="center">
 
-### Run
+# Run
 
-*environments and agents, and what they quietly cost*
+**environments and agents, and what they quietly cost**
 
 <sub>`CAPITALS` are placeholders to replace &nbsp;·&nbsp; `Amey-Thakur/GITHUB-TRICKS` is this repository, swap in your own &nbsp;·&nbsp; `{owner}` in a `gh` command is literal</sub>
 
@@ -1424,9 +1424,9 @@ api.enterprise.githubcopilot.com    Enterprise
 
 <div align="center">
 
-### Reference
+# Reference
 
-*what stopped working, and what to share*
+**what stopped working, and what to share**
 
 <sub>`CAPITALS` are placeholders to replace &nbsp;·&nbsp; `Amey-Thakur/GITHUB-TRICKS` is this repository, swap in your own &nbsp;·&nbsp; `{owner}` in a `gh` command is literal</sub>
 
