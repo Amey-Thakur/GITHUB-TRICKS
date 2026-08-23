@@ -18,15 +18,15 @@
 
 <br>
 
-| | |
-|---:|:---|
-| **Start here** | [The ten that surprise everyone](#start-here) |
-| **Browse** | [One-word swaps](#one-word-swaps) &nbsp;·&nbsp; [URLs](#urls) &nbsp;·&nbsp; [Keyboard](#keyboard) &nbsp;·&nbsp; [Search](#search) |
-| **Build** | [Repository](#repository) &nbsp;·&nbsp; [Actions](#actions) &nbsp;·&nbsp; [Security](#security) |
-| **Write** | [Markdown](#markdown) &nbsp;·&nbsp; [Profile](#profile) |
-| **Automate** | [gh CLI](#the-gh-cli) &nbsp;·&nbsp; [API](#the-api) &nbsp;·&nbsp; [Git](#git) |
-| **Run** | [Codespaces](#codespaces) &nbsp;·&nbsp; [Copilot](#copilot) |
-| **Reference** | [Dead tricks](#dead-tricks) &nbsp;·&nbsp; [Share it](#share-it) &nbsp;·&nbsp; [Contributing](#contributing) |
+<table>
+  <tr><td align="left"><b>Start here</b></td><td align="left"><a href="#start-here">The ten that surprise everyone</a></td></tr>
+  <tr><td align="left"><b>Browse</b></td><td align="left"><a href="#one-word-swaps">One-word swaps</a> &nbsp;&middot;&nbsp; <a href="#urls">URLs</a> &nbsp;&middot;&nbsp; <a href="#keyboard">Keyboard</a> &nbsp;&middot;&nbsp; <a href="#search">Search</a></td></tr>
+  <tr><td align="left"><b>Build</b></td><td align="left"><a href="#repository">Repository</a> &nbsp;&middot;&nbsp; <a href="#actions">Actions</a> &nbsp;&middot;&nbsp; <a href="#security">Security</a></td></tr>
+  <tr><td align="left"><b>Write</b></td><td align="left"><a href="#markdown">Markdown</a> &nbsp;&middot;&nbsp; <a href="#profile">Profile</a></td></tr>
+  <tr><td align="left"><b>Automate</b></td><td align="left"><a href="#the-gh-cli">gh CLI</a> &nbsp;&middot;&nbsp; <a href="#the-api">API</a> &nbsp;&middot;&nbsp; <a href="#git">Git</a></td></tr>
+  <tr><td align="left"><b>Run</b></td><td align="left"><a href="#codespaces">Codespaces</a> &nbsp;&middot;&nbsp; <a href="#copilot">Copilot</a></td></tr>
+  <tr><td align="left"><b>Reference</b></td><td align="left"><a href="#dead-tricks">Dead tricks</a> &nbsp;&middot;&nbsp; <a href="#share-it">Share it</a> &nbsp;&middot;&nbsp; <a href="#contributing">Contributing</a></td></tr>
+</table>
 
 <br>
 
