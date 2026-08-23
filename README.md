@@ -12,7 +12,6 @@
 <br>
 
 [![Tricks](https://img.shields.io/badge/Tricks-170+-181717?logo=github&logoColor=white)](#start-here)
-[![Curated by](https://img.shields.io/badge/Curated_by-Amey_Thakur-0969DA?logo=github&logoColor=white)](https://github.com/Amey-Thakur)
 [![License](https://img.shields.io/badge/License-MIT-lightgrey)](LICENSE)
 
 <br>
