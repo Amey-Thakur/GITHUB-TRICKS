@@ -557,19 +557,42 @@ What GitHub actually does to your Markdown, as opposed to what the spec says.
 
 ### Alerts
 
+Five callouts, five colours. Every coloured box on this page is one of them.
+
+| Type | Colour | Reach for it when |
+|---|---|---|
+| `> [!NOTE]` | Blue | Context worth knowing, but nothing breaks |
+| `> [!TIP]` | Green | A better way to do the same thing |
+| `> [!IMPORTANT]` | Purple | They must not skip this |
+| `> [!WARNING]` | Amber | A trap with real consequences |
+| `> [!CAUTION]` | Red | Data loss, security, or anything irreversible |
+
+Copy the set:
+
 ```
-> [!NOTE]      blue      > [!WARNING]   amber
-> [!TIP]       green     > [!CAUTION]   red
-> [!IMPORTANT] purple
+> [!NOTE]
+> Context worth knowing.
+
+> [!TIP]
+> A better way to do the same thing.
+
+> [!IMPORTANT]
+> They must not skip this.
+
+> [!WARNING]
+> A trap with real consequences.
+
+> [!CAUTION]
+> Data loss, security, or anything irreversible.
 ```
 
-Keywords are case-insensitive, so `> [!note]` works. Only these five exist: `[!DANGER]` and `[!INFO]` render as literal text inside an ordinary blockquote, with no error.
+Keywords are case-insensitive, so `> [!note]` works. Only these five exist: `[!DANGER]` and `[!INFO]` render as literal text inside an ordinary blockquote, with no error at all.
 
 > [!CAUTION]
 > **Alerts silently degrade to plain text inside `<details>`, a list item, or any nested element.** The widely shared "collapsible section containing a callout" pattern does not work. Put the alert before or after the block, at document top level.
 
 > [!NOTE]
-> `> **Note**` was never an alert. A 2022 beta styled bold-word blockquotes, was rolled back, and thousands of READMEs still carry the dead syntax.
+> `> **Note**` was never an alert. A 2022 beta styled bold-word blockquotes, was rolled back, and thousands of READMEs still carry the dead syntax. The marker must also be the **first line** of the blockquote.
 
 ### Collapsible sections
 
@@ -633,6 +656,39 @@ The one-word `info` diagram makes Mermaid print the version GitHub is running. `
 
 > [!TIP]
 > Four backticks let you show a fence inside a fence. Tildes work too, and carry a language: ` ~~~js `. Language tags are case-insensitive aliases resolved through Linguist, and an unknown tag fails silently, so a typo costs you highlighting forever.
+
+### Everything else a README needs
+
+```
+- [x] a finished task          uppercase [X] works too
+- [ ] \(escape a leading paren
+
+| left | centre | right |
+|:-----|:------:|------:|
+
+<kbd>Ctrl</kbd> + <kbd>K</kbd>          keycaps
+H<sub>2</sub>O and x<sup>2</sup>        sub and superscript
+==highlight==  is not GFM, use <mark>   marks
+:shipit: :octocat:                      GitHub-only emoji
+
+[relative link](docs/GUIDE.md)          resolves against the current branch
+![image](.github/social/keys.png)       so does an image
+```
+
+| Thing | What actually happens |
+|---|---|
+| A table cell | Cannot hold block content. A `- item` stays inline. `<br>` is the only line break |
+| Task lists in an **issue** body | A task referencing another issue **auto-checks itself** when that issue closes, and the count shows in issue lists |
+| A hand-written table of contents | Unnecessary. GitHub builds an **Outline** from your headings, reachable from the ☰ control in the file header, and it is never stale |
+| A README over **500 KiB** | Silently truncated when viewed on GitHub |
+| `:shipit:`, `:octocat:` and 21 others | GitHub-hosted images, not Unicode, so they break on npm, PyPI and anywhere off GitHub. There are 1,936 shortcodes in total |
+| A relative link | Resolves against the branch you are viewing, so it keeps working on a fork |
+
+> [!TIP]
+> Duplicate headings get `-1`, `-2` appended to their anchors. `## C++ & C#` becomes `#c--c`, with two hyphens, because the stripped `&` leaves its spacing behind. Accented and CJK characters are preserved rather than transliterated.
+
+> [!NOTE]
+> A single newline is a line break in a comment but **not** in a `.md` file, which is why a nicely formatted issue body collapses into one paragraph when pasted into a README. Two trailing spaces, a trailing `\`, or `<br>` work in both.
 
 ### Things that only work in some places
 
@@ -1106,6 +1162,74 @@ Code completions and next edit suggestions cost **zero credits** and stay unlimi
 
 > [!NOTE]
 > Free Copilot Pro for open-source maintainers is re-evaluated **monthly**, so a dip in your project's popularity can remove it mid-workflow, and those granted it cannot cancel it.
+
+### Chat, in the editor
+
+```
+/clear  /explain  /fix  /fixTestFailure  /help  /new  /tests
+@azure  @github  @terminal  @vscode
+#block  #class  #file  #selection  #sym  #terminalLastCommand
+```
+
+> [!NOTE]
+> `@workspace` and `#codebase` have quietly dropped out of GitHub's official cheat sheet. Chat went agentic, so the agent searches the codebase itself rather than waiting to be pointed at it. `/doc` is gone from the list too.
+
+### Custom agents and prompt files
+
+```
+.github/agents/NAME.agent.md      workspace agents (VS Code also reads .claude/agents)
+~/.copilot/agents                 your personal ones
+.github/prompts/NAME.prompt.md    reusable prompts
+```
+
+```yaml
+---
+description: Required.
+tools: ["*"]
+model: auto
+target: vscode            # or github-copilot; defaults to both
+disable-model-invocation: false
+---
+```
+
+> [!WARNING]
+> `target` is the key most people miss: it scopes an agent to VS Code or to github.com, and without it the agent appears in both. `infer` is retired in favour of `disable-model-invocation`, and an old file still carrying `infer` is silently ineffective.
+
+### Spaces
+
+Create at [github.com/copilot/spaces](https://github.com/copilot/spaces). Reachable from your editor through the GitHub MCP server's remote-only `copilot_spaces` toolset.
+
+> [!IMPORTANT]
+> **Attaching a file and attaching its repository are not the same thing.** An attached file has its full contents loaded into context for **every** query. An attached repository is searched, and only the relevant parts come back. Attach the file when it must always be considered; attach the repo when it should be available.
+
+### Agent Plugins
+
+Version 1.0 landed on 12 August 2026 and packages skills, MCP servers and agents as one vendor-neutral installable unit.
+
+```
+plugin.json          needs $schema and name
+skills/NAME/SKILL.md
+mcp.json
+com.github.copilot/  agents, hooks
+```
+
+```bash
+copilot plugin install NAME@marketplace
+```
+
+> [!CAUTION]
+> Installing from a repository URL, a raw URL or a local path is **already deprecated** and slated for removal, barely weeks after 1.0. Use the `name@marketplace` form.
+
+### Self-hosted and network-restricted setups
+
+```
+api.individual.githubcopilot.com    Pro and Pro+
+api.business.githubcopilot.com      Business
+api.enterprise.githubcopilot.com    Enterprise
+```
+
+> [!WARNING]
+> On 27 February 2026 the cloud agent's runner hostname split by subscription tier, replacing the single `api.githubcopilot.com`. It affects self-hosted and larger runners with private networking, and it fails **per user**, not globally: routing depends on the plan of whoever triggered the run, so one teammate works and another does not. Allow all three.
 
 ### Retired, and worth knowing
 
