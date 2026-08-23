@@ -11,7 +11,7 @@
 
 <br>
 
-[![Tricks](https://img.shields.io/badge/Tricks-250+-181717?logo=github&logoColor=white)](#start-here)
+[![Tricks](https://img.shields.io/badge/Tricks-300+-181717?logo=github&logoColor=white)](#start-here)
 [![Verified](https://img.shields.io/badge/Verified-against_the_docs-8250DF?logo=github&logoColor=white)](#contributing)
 [![Curated by](https://img.shields.io/badge/Curated_by-Amey_Thakur-0969DA?logo=github&logoColor=white)](https://github.com/Amey-Thakur)
 [![License](https://img.shields.io/badge/License-MIT-lightgrey)](LICENSE)
