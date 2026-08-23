@@ -49,7 +49,7 @@ Ten that surprise almost everyone. Click any one and watch it work.
 > |---|---|
 > | `Amey-Thakur/GITHUB-TRICKS` | This repository, used as a live demo. Replace it with your own `owner/repo` |
 > | `cli/cli` | Someone else's busy repository, used where a trick needs real history to show anything |
-> | `OWNER`, `REPO`, `USERNAME`, `BRANCH`, `SHA`, `PATH` | Placeholders in CAPITALS. **These always need replacing** |
+> | `OWNER`, `REPO`, `USERNAME`, `BRANCH`, `SHA`, `PATH`, and anything else in CAPITALS | A placeholder. **These always need replacing** |
 > | `{owner}`, `{repo}` in a `gh` command | **Not** placeholders. Type them literally; `gh` fills them in from the repository you are standing in |
 >
 > Every link is live, and every block in [Start here](#start-here) runs exactly as written.
@@ -179,6 +179,8 @@ curl -X PURGE https://camo.githubusercontent.com/HASH
 
 *moving around the site itself*
 
+<sub>`CAPITALS` are placeholders to replace &nbsp;·&nbsp; `Amey-Thakur/GITHUB-TRICKS` is this repository, swap in your own &nbsp;·&nbsp; `{owner}` in a `gh` command is literal</sub>
+
 </div>
 
 ## One-word swaps
@@ -294,7 +296,7 @@ git fetch origin pull/123/head:pr-123               # any PR, including closed o
 /issues/new?title=Bug&body=Steps&labels=bug&assignees=octocat
 /compare/main...branch?quick_pull=1&title=Fix&template=release.md
 /releases/new?tag=v1.0.1&title=v1.0.1&prerelease=1
-/commits/main?author=USER&since=2025-01-01&until=2025-01-08
+/commits/main?author=USERNAME&since=2025-01-01&until=2025-01-08
 ```
 
 > [!CAUTION]
@@ -381,7 +383,7 @@ sort:reactions-+1                     ranked by thumbs up
 ```
 topics:>3                        by topic count, not topic: name
 size:1000..2000                  kilobytes, not megabytes
-org:NAME props.production:true   organisation custom properties
+org:ORGNAME props.production:true   organisation custom properties
 parent:SHA                       a commit's children
 merge:true                       merge commits only
 saved:                           type this in the search bar for saved queries
@@ -399,6 +401,8 @@ saved:                           type this in the search bar for saved queries
 ### Build
 
 *your repository, and what it does behind your back*
+
+<sub>`CAPITALS` are placeholders to replace &nbsp;·&nbsp; `Amey-Thakur/GITHUB-TRICKS` is this repository, swap in your own &nbsp;·&nbsp; `{owner}` in a `gh` command is literal</sub>
 
 </div>
 
@@ -543,6 +547,8 @@ gh attestation verify ./app -R OWNER/REPO \
 
 *Markdown, and the page people actually read*
 
+<sub>`CAPITALS` are placeholders to replace &nbsp;·&nbsp; `Amey-Thakur/GITHUB-TRICKS` is this repository, swap in your own &nbsp;·&nbsp; `{owner}` in a `gh` command is literal</sub>
+
 </div>
 
 ## Markdown
@@ -682,6 +688,8 @@ Social preview images are 1280 × 640 and must be under 1 MB, and the upload ref
 ### Automate
 
 *the terminal, the API, and Git itself*
+
+<sub>`CAPITALS` are placeholders to replace &nbsp;·&nbsp; `Amey-Thakur/GITHUB-TRICKS` is this repository, swap in your own &nbsp;·&nbsp; `{owner}` in a `gh` command is literal</sub>
 
 </div>
 
@@ -917,6 +925,8 @@ git bisect run ./test.sh          # exit 125 means "skip", not "bad"
 
 *environments and agents, and what they quietly cost*
 
+<sub>`CAPITALS` are placeholders to replace &nbsp;·&nbsp; `Amey-Thakur/GITHUB-TRICKS` is this repository, swap in your own &nbsp;·&nbsp; `{owner}` in a `gh` command is literal</sub>
+
 </div>
 
 ## Codespaces
@@ -936,7 +946,7 @@ git bisect run ./test.sh          # exit 125 means "skip", not "bad"
 
 ```bash
 gh codespace list            # an asterisk marks uncommitted or unpushed work
-gh codespace stop -c NAME
+gh codespace stop -c CODESPACE-NAME
 gh codespace create -r OWNER/REPO --idle-timeout 15m   # only settable at creation
 ```
 
@@ -1121,6 +1131,8 @@ Code completions and next edit suggestions cost **zero credits** and stay unlimi
 ### Reference
 
 *what stopped working, and what to share*
+
+<sub>`CAPITALS` are placeholders to replace &nbsp;·&nbsp; `Amey-Thakur/GITHUB-TRICKS` is this repository, swap in your own &nbsp;·&nbsp; `{owner}` in a `gh` command is literal</sub>
 
 </div>
 
