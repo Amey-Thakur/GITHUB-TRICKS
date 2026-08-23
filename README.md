@@ -1481,9 +1481,6 @@ Six cards, in [`.github/social`](.github/social), sized for where they are going
 
 **Why those two sizes.** 1280 &times; 640 is the 2:1 ratio link unfurlers read from Open Graph, so it survives LinkedIn, X, Slack, Discord and Reddit without being cropped. Anything closer to square gets letterboxed there. The 1080 &times; 1080 card exists because Instagram and WhatsApp crop a wide image to a square and would cut the title in half.
 
-> [!TIP]
-> `address-bar.png` is the one to upload under **Settings &rarr; Social preview**, which is what every unfurl of this repository will show. GitHub has no API for that setting, so it has to be done by hand, once.
-
 <br>
 
 ## Contributing
