@@ -1468,7 +1468,21 @@ Every list still repeats these. None of them work.
 
 ## Share it
 
-Cards sized for every platform live in [`.github/social`](.github/social): `address-bar`, `diff`, `keys`, `dead-tricks` and `ten-tricks` at 1280 &times; 640, plus `square` at 1080 &times; 1080 for WhatsApp and Instagram.
+Six cards, in [`.github/social`](.github/social), sized for where they are going.
+
+| Card | Size | Made for |
+|---|---|---|
+| `address-bar` | 1280 &times; 640 | The repository's own social preview, and any link unfurl: LinkedIn, X, Slack, Discord, Reddit, Teams |
+| `dead-tricks` | 1280 &times; 640 | The contrarian post, the one people argue with. X, Hacker News, Reddit |
+| `ten-tricks` | 1280 &times; 640 | The save-for-later post. LinkedIn, where dense and useful outperforms clever |
+| `diff` | 1280 &times; 640 | Developer audiences who will recognise a diff on sight. X, Hacker News |
+| `keys` | 1280 &times; 640 | A lighter post, anywhere |
+| `square` | 1080 &times; 1080 | Feeds that crop to a square: Instagram, WhatsApp status, LinkedIn on mobile |
+
+**Why those two sizes.** 1280 &times; 640 is the 2:1 ratio link unfurlers read from Open Graph, so it survives LinkedIn, X, Slack, Discord and Reddit without being cropped. Anything closer to square gets letterboxed there. The 1080 &times; 1080 card exists because Instagram and WhatsApp crop a wide image to a square and would cut the title in half.
+
+> [!TIP]
+> `address-bar.png` is the one to upload under **Settings &rarr; Social preview**, which is what every unfurl of this repository will show. GitHub has no API for that setting, so it has to be done by hand, once.
 
 <br>
 
