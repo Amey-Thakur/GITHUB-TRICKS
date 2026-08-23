@@ -1479,7 +1479,8 @@ Six cards, in [`.github/social`](.github/social), sized for where they are going
 | `keys` | 1280 &times; 640 | A lighter post, anywhere |
 | `square` | 1080 &times; 1080 | Feeds that crop to a square: Instagram, WhatsApp status, LinkedIn on mobile |
 
-**Why those two sizes.** 1280 &times; 640 is the 2:1 ratio link unfurlers read from Open Graph, so it survives LinkedIn, X, Slack, Discord and Reddit without being cropped. Anything closer to square gets letterboxed there. The 1080 &times; 1080 card exists because Instagram and WhatsApp crop a wide image to a square and would cut the title in half.
+> [!NOTE]
+> **Why those two sizes.** 1280 &times; 640 is the 2:1 ratio link unfurlers read from Open Graph, so it survives LinkedIn, X, Slack, Discord and Reddit without being cropped. Anything closer to square gets letterboxed there. The 1080 &times; 1080 card exists because Instagram and WhatsApp crop a wide image to a square and would cut the title in half.
 
 <br>
 
