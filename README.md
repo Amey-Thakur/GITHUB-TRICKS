@@ -113,6 +113,9 @@ https://github.com/cli/cli/pull/9000/files?w=1
 
 <br>
 
+> [!TIP]
+> Five of the ten below run on this repository, so the link and the copy block are the same working URL. Swap the owner and repo for your own and they keep working.
+
 **6. Subscribe to a single file.** RSS for one path, not the whole repository.
 
 ```
@@ -235,6 +238,9 @@ Every hostname below is a live link, pointed at this repository. Copy any of the
 > **`A...B` is not `A..B`.** Three dots diff from the merge base, which is what a pull request shows. Two dots diff the current tips, so the answer changes whenever the base branch moves. Say which one you used when you paste a compare link into a bug report.
 
 <br>
+
+> [!TIP]
+> `.diff` gives you one combined diff. `.patch` gives you the commits, so `git am` replays them with their messages and authors intact. Reach for `.patch` when you want history, `.diff` when you want to read.
 
 ### Files, lines and blame
 
@@ -698,6 +704,9 @@ Because without it, this paragraph would render as literal `**asterisks**` inste
 
 <br>
 
+> [!TIP]
+> Everything from here down is rendered by this file. If a demo looks impossible, open the [source](https://github.com/Amey-Thakur/GITHUB-TRICKS/blob/main/README.md?plain=1) and copy it.
+
 **A diagram.** GitHub renders Mermaid from a fenced block, no image, no build step.
 
 ```mermaid
@@ -1124,6 +1133,9 @@ gh api graphql -f query='{rateLimit(dryRun:true){cost nodeCount limit} viewer{lo
 
 <br>
 
+> [!IMPORTANT]
+> Copy any command here and run it against your own repository. Every one is read-only, so nothing can be changed by trying them.
+
 **Count how many pull request refs a repository is really carrying.**
 
 ```bash
@@ -1481,6 +1493,11 @@ Six cards, in [`.github/social`](.github/social), sized for where they are going
 
 > [!NOTE]
 > **Why those two sizes.** 1280 &times; 640 is the 2:1 ratio link unfurlers read from Open Graph, so it survives LinkedIn, X, Slack, Discord and Reddit without being cropped. Anything closer to square gets letterboxed there. The 1080 &times; 1080 card exists because Instagram and WhatsApp crop a wide image to a square and would cut the title in half.
+
+<br>
+
+> [!TIP]
+> Posting one of these? The cards carry no counts and no dates, so they stay accurate however long they circulate.
 
 <br>
 
