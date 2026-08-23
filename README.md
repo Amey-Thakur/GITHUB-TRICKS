@@ -52,7 +52,7 @@ The ten that surprise almost everyone.
 | **Unstick a stale badge** | Force GitHub's image proxy to refetch | `curl -X PURGE https://camo.githubusercontent.com/HASH` |
 
 > [!NOTE]
-> Three tricks in every other list are dead: `/stargazers` is 404 to the public, `github-readme-stats` is unmaintained, and `uithub.com` now demands a login. [The full list of what stopped working](#dead-tricks).
+> `/stargazers` now 404s, `github-readme-stats` is unmaintained, `uithub.com` wants a login. [Everything else that quietly died](#dead-tricks).
 
 <br>
 
@@ -458,25 +458,20 @@ Stop recommending these.
 
 <br>
 
-## How this was checked
+## Contributing
 
-Every entry was read against its primary source on 22 August 2026: GitHub's docs, GitHub's changelog, the tool's own README, or a live request. Undocumented tricks are labelled as such, because they can change without notice.
+Found a mistake, or a trick that belongs here? [Open an issue](https://github.com/Amey-Thakur/GITHUB-TRICKS/issues/new). A link to the source gets it in fastest.
 
-Found a mistake, or a trick that belongs here? [Open an issue](https://github.com/Amey-Thakur/GITHUB-TRICKS/issues/new). A link to the source gets it merged fastest.
-
-<br>
-
-## Related
-
-[**GIT-GUIDE**](https://github.com/Amey-Thakur/GIT-GUIDE) covers Git itself: every command, with danger levels and undo. This repo covers the platform around it.
+Every entry here was read against its primary source on 22 August 2026. Undocumented tricks are labelled, because they can change without notice.
 
 <br>
 
 <div align="center">
 
-**[Amey Thakur](https://github.com/Amey-Thakur)** &nbsp;·&nbsp;
-[ORCID](https://orcid.org/0000-0001-5644-1575) &nbsp;·&nbsp;
-[LinkedIn](https://www.linkedin.com/in/amey-thakur/) &nbsp;·&nbsp;
-[MIT](LICENSE)
+Git itself, command by command, is in [**GIT-GUIDE**](https://github.com/Amey-Thakur/GIT-GUIDE).
+
+<br>
+
+**[Amey Thakur](https://github.com/Amey-Thakur)** &nbsp;·&nbsp; [MIT](LICENSE)
 
 </div>
