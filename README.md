@@ -116,7 +116,7 @@ https://github.com/OWNER/REPO/commits/main/README.md.atom
 https://github.com/USERNAME.keys
 ```
 
-[Try it](https://github.com/Amey-Thakur.keys)
+[Try it on Amey-Thakur](https://github.com/Amey-Thakur.keys)
 
 <br>
 
@@ -159,6 +159,7 @@ curl -X PURGE https://camo.githubusercontent.com/HASH
 ## One-word swaps
 
 Change one word in the address bar. Same repository, entirely different thing.
+Each hostname below is a live link, pointed at `cli/cli`.
 
 <div align="center">
 
@@ -176,16 +177,16 @@ Change one word in the address bar. Same repository, entirely different thing.
 
 <br>
 
-| Swap to | You get | Try it | Catch |
-|---|---|---|---|
-| `github1s.com` | VS Code in the browser | [→](https://github1s.com/cli/cli) | Read-only. Private repos need a pasted token |
-| `github.dev` | The same editor, with write access | [→](https://github.dev/cli/cli) | No terminal, no builds. Press <kbd>.</kbd> from any repo |
-| `gitingest.com` | The repository as one prompt-sized file | [→](https://gitingest.com/cli/cli) | Silently skips files over 50 kB |
-| `gitmcp.io` | An MCP server for your AI | [→](https://gitmcp.io/cli/cli) | `gitmcp.io/docs` floats to any repo. Scope it |
-| `deepwiki.com` | A generated wiki, with its own MCP | [→](https://deepwiki.com/cli/cli) | Public repositories only |
-| `gitdiagram.com` | An architecture diagram | [→](https://gitdiagram.com/cli/cli) | An LLM reading the file tree, not import analysis |
-| `gitreverse.com` | A "build this from scratch" prompt | [→](https://gitreverse.com/cli/cli) | Reads the README and metadata only |
-| `forgithub.com` | The index of every swap tool | [→](https://forgithub.com/cli/cli) | Unmaintained. Two of its entries are dead |
+| Swap to | You get | Catch |
+|---|---|---|
+| [`github1s.com`](https://github1s.com/cli/cli) | VS Code in the browser | Read-only. Private repos need a pasted token |
+| [`github.dev`](https://github.dev/cli/cli) | The same editor, with write access | No terminal, no builds. Press <kbd>.</kbd> from any repo |
+| [`gitingest.com`](https://gitingest.com/cli/cli) | The repository as one prompt-sized file | Silently skips files over 50 kB |
+| [`gitmcp.io`](https://gitmcp.io/cli/cli) | An MCP server for your AI | `gitmcp.io/docs` floats to any repo. Scope it |
+| [`deepwiki.com`](https://deepwiki.com/cli/cli) | A generated wiki, with its own MCP | Public repositories only |
+| [`gitdiagram.com`](https://gitdiagram.com/cli/cli) | An architecture diagram | An LLM reading the file tree, not import analysis |
+| [`gitreverse.com`](https://gitreverse.com/cli/cli) | A "build this from scratch" prompt | Reads the README and metadata only |
+| [`forgithub.com`](https://forgithub.com/cli/cli) | The index of every swap tool | Unmaintained. Two of its entries are dead |
 
 <br>
 
