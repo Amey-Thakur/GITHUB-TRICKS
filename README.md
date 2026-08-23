@@ -657,6 +657,85 @@ The one-word `info` diagram makes Mermaid print the version GitHub is running. `
 > [!TIP]
 > Four backticks let you show a fence inside a fence. Tildes work too, and carry a language: ` ~~~js `. Language tags are case-insensitive aliases resolved through Linguist, and an unknown tag fails silently, so a typo costs you highlighting forever.
 
+### See it work
+
+Everything in this section is rendered by this file, live. To see the exact source that produced it, open this README with [`?plain=1`](https://github.com/Amey-Thakur/GITHUB-TRICKS/blob/main/README.md?plain=1) and read along.
+
+<br>
+
+**Inline, side by side.**
+
+| You write | You get |
+|---|---|
+| `<kbd>Ctrl</kbd> + <kbd>K</kbd>` | <kbd>Ctrl</kbd> + <kbd>K</kbd> |
+| `H<sub>2</sub>O` and `x<sup>2</sup>` | H<sub>2</sub>O and x<sup>2</sup> |
+| `<mark>highlighted</mark>` | <mark>highlighted</mark> |
+| `~~struck through~~` | ~~struck through~~ |
+| `:rocket: :octocat:` | :rocket: :octocat: |
+| `` `inline code` `` | `inline code` |
+
+<br>
+
+**A collapsible section**, which is how you keep a long README short.
+
+<details>
+<summary><b>Why this one needs a blank line after the summary tag</b></summary>
+
+<br>
+
+Because without it, this paragraph would render as literal `**asterisks**` instead of **bold**, and the list below would stay on one line:
+
+- the blank line is what switches Markdown parsing back on
+- `<summary>` itself never parses Markdown, which is why its label uses `<b>`
+
+</details>
+
+<br>
+
+**A task list**, which counts itself in issue lists.
+
+- [x] Read the trick
+- [x] Copy the block
+- [ ] Tell someone where you found it
+
+<br>
+
+**A diagram.** GitHub renders Mermaid from a fenced block, no image, no build step.
+
+```mermaid
+flowchart LR
+    A["github.com/Amey-Thakur/GITHUB-TRICKS"] --> B["github1s.com"]
+    A --> C["gitingest.com"]
+    A --> D["gitmcp.io"]
+    B --> B2["VS Code, in the browser"]
+    C --> C2["the repo as one prompt"]
+    D --> D2["an MCP server for your AI"]
+```
+
+<br>
+
+**Maths**, from a `math` fence rather than dollar signs.
+
+```math
+D_{\text{sync}} = \sum_{i=1}^{n} \left| t_i - t_{i-1} \right|
+```
+
+<br>
+
+**A sized image.** `width` survives the sanitiser; a `style` attribute does not.
+
+<div align="center">
+
+<img src=".github/social/keys.png" alt="Five GitHub keycaps: full stop, t, y, b and question mark" width="440">
+
+</div>
+
+<br>
+
+**A footnote.**[^demo] Look at the very bottom of this file to see where it landed.
+
+[^demo]: Footnotes always render at the end of the document, never where you wrote them, and the backref arrow returns you here.
+
 ### Everything else a README needs
 
 ```
