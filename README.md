@@ -229,7 +229,7 @@ Change one word in the address bar. Same repo, different thing.
 
 </details>
 
-<details>
+<details open>
 <summary><b>Repositories, commits and the API</b></summary>
 
 <br>
@@ -286,7 +286,7 @@ Every search API result set stops at 1,000. When a query times out the API retur
 
 </details>
 
-<details>
+<details open>
 <summary><b>Pages, wikis, gists, releases</b></summary>
 
 <br>
@@ -405,7 +405,7 @@ Pin every third-party action to a full 40-character SHA. Short SHAs are rejected
 | Dark and light images | `<picture>` + `prefers-color-scheme` | `#gh-dark-mode-only` is deprecated |
 | A stale badge refreshed | `curl -X PURGE` the camo URL | Use sparingly |
 | Sizing an image | `<img width="500">` | Only nine HTML tags are filtered, the rest work |
-| A collapsible section | `<details><summary>` | Needs a blank line before Markdown inside |
+| A collapsible section | `<details open><summary>` | Needs a blank line before Markdown inside |
 
 **`.github/README.md` outranks your root README.** Search order is `.github/`, root, `docs/`. A contributor note in the wrong place replaces your front page.
 
