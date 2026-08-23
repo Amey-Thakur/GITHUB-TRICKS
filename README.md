@@ -1511,7 +1511,8 @@ Every entry was read against its primary source on 22 August 2026. Undocumented 
 
 <div align="center">
 
-Git itself, command by command, is in [**GIT-GUIDE**](https://github.com/Amey-Thakur/GIT-GUIDE).
+Git itself, command by command, is in [**GIT-GUIDE**](https://github.com/Amey-Thakur/GIT-GUIDE),
+where 47 of these answers are also searchable alongside a thousand others.
 
 <br>
 
