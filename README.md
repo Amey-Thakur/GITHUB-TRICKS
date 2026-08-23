@@ -30,8 +30,7 @@
 
 <br>
 
-*Every code block below is a copy button away from working. Nothing is a placeholder:
-copy a line, paste it, and it runs.*
+*Hover any code block and a copy button appears, top right.*
 
 </div>
 
@@ -40,6 +39,18 @@ copy a line, paste it, and it runs.*
 ## Start here
 
 Ten that surprise almost everyone. Click any one and watch it work.
+
+> [!TIP]
+> **How to read this page.**
+>
+> | You see | It means |
+> |---|---|
+> | `Amey-Thakur/GITHUB-TRICKS` | This repository, used as a live demo. Replace it with your own `owner/repo` |
+> | `cli/cli` | Someone else's busy repository, used where a trick needs real history to show anything |
+> | `OWNER`, `REPO`, `USERNAME`, `BRANCH`, `SHA`, `PATH` | Placeholders in CAPITALS. **These always need replacing** |
+> | `{owner}`, `{repo}` in a `gh` command | **Not** placeholders. Type them literally; `gh` fills them in from the repository you are standing in |
+>
+> Every link is live, and every block in [Start here](#start-here) runs exactly as written.
 
 <div align="center">
 
