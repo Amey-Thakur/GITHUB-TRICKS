@@ -796,6 +796,25 @@ USERNAME/USERNAME            a public repo named exactly your username
 > [!CAUTION]
 > **`.github/README.md` outranks your root README.** The lookup order is `.github/`, then the root, then `docs/`. A contributor note in the wrong place replaces your front page, and nothing tells you.
 
+**Both badge techniques, rendered live from this repository.**
+
+[![codemeta](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FAmey-Thakur%2FGITHUB-TRICKS%2Fmain%2Fcodemeta.json&query=%24.version&label=codemeta&color=8250DF&logo=github&logoColor=white)](codemeta.json)
+[![served from](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FAmey-Thakur%2FGITHUB-TRICKS%2Fmain%2F.github%2Fbadge.json)](.github/badge.json)
+
+The first reads `$.version` straight out of [`codemeta.json`](codemeta.json) with a JSONPath query. The second is an endpoint badge: [`.github/badge.json`](.github/badge.json) is four keys in a static file, and shields renders whatever it says.
+
+```
+https://img.shields.io/badge/dynamic/json?url=<ENCODED-JSON-URL>&query=%24.version&label=codemeta
+https://img.shields.io/endpoint?url=<ENCODED-JSON-URL>
+```
+
+```json
+{ "schemaVersion": 1, "label": "served from", "message": "this repository", "color": "8250DF" }
+```
+
+> [!NOTE]
+> Both URLs must be percent-encoded, and a wrong JSONPath yields a silently empty badge rather than an error. `message` cannot be empty, though `label` can.
+
 **Why your commit is missing from the graph.** The author email must be linked to your account, the repository must not be a fork, and the commit must be on the default branch or on `gh-pages`, which is the one special case nobody knows.
 
 **Why your stats card broke.** `github-readme-stats` is unmaintained and its shared instance returns 503. Generate cards inside your own Actions run instead. Badges go blank because shields.io runs on donated rate limit, and you can lend yours at [img.shields.io/github-auth](https://img.shields.io/github-auth).
@@ -855,6 +874,9 @@ gh api -X PATCH /orgs/{org}/properties/schema \
   -F 'properties[][property_name]=environment' \
   -F 'properties[][allowed_values][]=production'
 ```
+
+> [!WARNING]
+> **On Windows Git Bash, drop the leading slash.** `gh api /rate_limit` is rewritten by the shell into a filesystem path and fails with `invalid API endpoint: "C:/Program Files/Git/rate_limit"`. Write `gh api rate_limit`, or set `MSYS_NO_PATHCONV=1`. The same shell mangles `{owner}` in PowerShell, where the braces need quoting.
 
 ### Output that reads well
 
@@ -1052,6 +1074,74 @@ git bisect run ./test.sh          # exit 125 means "skip", not "bad"
 
 <br>
 
+### Run it, see the output
+
+Every command here was run against this repository on 22 August 2026, and the output is what came back.
+
+**Score your own repository's community health.**
+
+```bash
+gh api repos/Amey-Thakur/GITHUB-TRICKS/community/profile \
+  --jq '{health: .health_percentage, missing: [.files | to_entries[] | select(.value==null) | .key]}'
+```
+
+```json
+{"health":42,"missing":["code_of_conduct","contributing","issue_template","pull_request_template"]}
+```
+
+It names exactly which community files you are missing, which is a faster audit than clicking through Insights. Remember it refuses to score a fork.
+
+<br>
+
+**See every rate-limit bucket at once.**
+
+```bash
+gh api rate_limit --jq '.resources | to_entries[]
+  | select(.key=="core" or .key=="search" or .key=="code_search")
+  | "\(.key)  \(.value.remaining)/\(.value.limit)"'
+```
+
+```
+code_search  10/10
+core         5000/5000
+search       30/30
+```
+
+Three separate buckets, three very different sizes. Code search really is ten per minute.
+
+<br>
+
+**Price a GraphQL query before you spend it.**
+
+```bash
+gh api graphql -f query='{rateLimit(dryRun:true){cost nodeCount limit} viewer{login}}' --jq '.data.rateLimit'
+```
+
+```json
+{"cost":1,"limit":5000,"nodeCount":0}
+```
+
+> [!NOTE]
+> `viewer{login}` returned nothing, because `dryRun` makes the whole document a no-op. That is the point being made earlier: you can price a query or run it, never both in one call.
+
+<br>
+
+**Count how many pull request refs a repository is really carrying.**
+
+```bash
+git ls-remote https://github.com/cli/cli 'refs/pull/*/head'  | wc -l
+git ls-remote https://github.com/cli/cli 'refs/pull/*/merge' | wc -l
+```
+
+```
+5033
+177
+```
+
+Every closed pull request keeps its `/head` ref forever, while only 177 still have a usable `/merge` ref. That gap is why a merge ref you assumed exists so often does not.
+
+<br>
+
 ---
 
 <div align="center">
@@ -1106,9 +1196,12 @@ gh codespace create -r OWNER/REPO --idle-timeout 15m   # only settable at creati
 > [!NOTE]
 > Codespaces secrets cannot be read at build time or inside a feature, only from `postCreateCommand` onward. `/tmp` is the inverse of everything else: it survives a rebuild but is wiped on every stop, and an idle timeout counts as a stop.
 
+**The badge, live.** This one opens a codespace on this repository.
+
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/Amey-Thakur/GITHUB-TRICKS)
+
 ```
-https://codespaces.new/OWNER/REPO
-https://codespaces.new/OWNER/REPO/tree/BRANCH
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/OWNER/REPO)
 ```
 
 <br>
