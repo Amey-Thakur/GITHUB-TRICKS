@@ -500,7 +500,7 @@ USERNAME/USERNAME            a public repo named exactly your username
 ```
 
 > [!TIP]
-> Only nine HTML tags are stripped from GitHub Markdown: `title`, `textarea`, `style`, `xmp`, `iframe`, `noembed`, `noframes`, `script` and `plaintext`. Everything else works, including `<img width>`, `<details>` and `<kbd>`. This README uses all three.
+> The "only nine tags are filtered" line everyone quotes is the GFM **spec**, not GitHub. GitHub adds a stricter allowlist on top. `<script>` and `<iframe>` are escaped, so you notice them, but `<video>`, `<form>`, `<input>`, `<button>` and inline `<svg>` are **deleted with no trace**. `<img width>`, `<picture>`, `<details>` and `<kbd>` all survive, and this README uses every one. Any `style` or `class` attribute is stripped, and every `id` you write is silently prefixed with `user-content-`.
 
 Social preview images are 1280 × 640 and must be under 1 MB, and the upload refuses rather than resizes. Topics cap at 20, and the API `PUT` replaces the whole set rather than adding to it.
 
