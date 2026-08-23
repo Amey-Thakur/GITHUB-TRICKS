@@ -1,0 +1,35 @@
+# Name: CITATION.cff
+# Purpose: Machine-readable citation metadata for this repository.
+# Description: GitHub reads this file to offer a "Cite this repository" button
+#   and to format the reference, so anyone can credit this project correctly in
+#   papers, posts, and other work.
+# License: MIT
+# Author: Amey Thakur (https://github.com/Amey-Thakur)
+# Date: 2026-08-22
+cff-version: 1.2.0
+title: "GitHub Tricks: every GitHub feature, URL trick and power-user tool worth knowing"
+message: "If you use this resource, please cite it using the metadata below."
+abstract: "A verified reference to GitHub beyond the obvious: URL parameters that change what a page gives you, the one-word hostname swaps that turn a repository into an editor, a prompt, a diagram or an MCP server, keyboard shortcuts nobody documents, the full search syntax with its undocumented index limits, Actions patterns and the traps that fail silently, supply-chain and security defaults, and profile README mechanics. Every entry gives the exact form to use and the failure mode, and tips that no longer work are listed as dead rather than repeated."
+type: software
+authors:
+  - given-names: Amey
+    family-names: Thakur
+    email: ameythakur20@gmail.com
+    orcid: "https://orcid.org/0000-0001-5644-1575"
+    website: "https://github.com/Amey-Thakur"
+repository-code: "https://github.com/Amey-Thakur/GITHUB-TRICKS"
+url: "https://github.com/Amey-Thakur/GITHUB-TRICKS"
+license: MIT
+version: "1.0.0"
+date-released: "2026-08-22"
+keywords:
+  - github
+  - github-tricks
+  - github-tips
+  - github-actions
+  - developer-tools
+  - productivity
+  - cheatsheet
+  - keyboard-shortcuts
+  - github-search
+  - open-source

@@ -1,0 +1,17 @@
+# Normalise every text file to LF in the repository, and check it out as LF too.
+# Without this, a Windows clone with core.autocrlf=true rewrites line endings on
+# checkout, which shows up as whole-file diffs nobody made.
+* text=auto eol=lf
+
+# Explicit, so a new extension never gets guessed wrong.
+*.md     text eol=lf
+*.json   text eol=lf
+*.yml    text eol=lf
+*.txt    text eol=lf
+*.cff    text eol=lf
+.gitattributes text eol=lf
+.gitignore     text eol=lf
+
+# Binary assets, never touched.
+*.png binary
+*.jpg binary
