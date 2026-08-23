@@ -24,7 +24,7 @@ Open an [issue](https://github.com/Amey-Thakur/GITHUB-TRICKS/issues/new) or a pu
 |---|---|
 | **The trick**, in one sentence | Append `.patch` to a pull request URL to get a `git am`-ready mbox |
 | **The exact form**, copy-and-run | `https://github.com/OWNER/REPO/pull/123.patch` |
-| **The catch**, which is the part that earns its place | It 302s to `patch-diff.githubusercontent.com`, so `curl` needs `-L` |
+| **The catch**, which is the part most lists leave out | It 302s to `patch-diff.githubusercontent.com`, so `curl` needs `-L` |
 | **The source** | A link to docs.github.com, the GitHub changelog, the tool's own README, or a live request anyone can repeat |
 
 A trick with no catch usually means the docs were skimmed rather than read. The failure mode, the limit, the silent behaviour: that is what makes an entry worth keeping.
@@ -52,11 +52,10 @@ If an entry no longer works, open an issue with what you ran and what came back.
 
 ## House style
 
-- **Every word earns its place.** No filler, no throat-clearing, no "in today's fast-paced world".
+- **Keep it short.** State the trick, the form and the catch. Nothing else is needed.
 - **Show the exact thing to type**, in a fenced block so it gets a copy button.
 - **Live links** point at a real repository. Use `Amey-Thakur/GITHUB-TRICKS` where the trick demos on it, `cli/cli` where the trick needs a repository with real history.
 - **CAPITALS** mark placeholders. `{owner}` and `{repo}` in a `gh` command are literal and must stay that way.
-- **No em dashes.** Commas, full stops, parentheses or a middot instead.
 - **Dates on anything volatile.** Copilot and Codespaces move monthly; an entry without a date is a trap for a future reader.
 
 <br>
