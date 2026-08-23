@@ -39,6 +39,14 @@
 
 Ten that surprise almost everyone. Click any one and watch it work.
 
+<div align="center">
+
+<img src=".github/social/ten-tricks.png" alt="The ten tricks, as a card: gitmcp.io, gitingest.com, diff by date, ?plain=1, ?w=1, .atom feeds, .keys, -linked:pr, symbol: search, and purging camo" width="860">
+
+</div>
+
+<br>
+
 **1. Turn any repository into a server your AI can read.** Nothing to install.
 
 ```
@@ -160,6 +168,14 @@ Change one word in the address bar. Same repository, entirely different thing.
 
 <br>
 
+<div align="center">
+
+<img src=".github/social/diff.png" alt="The same repository URL shown as a diff: github.com removed, github1s.com, gitingest.com and gitmcp.io added" width="860">
+
+</div>
+
+<br>
+
 | Swap to | You get | Try it | Catch |
 |---|---|---|---|
 | `github1s.com` | VS Code in the browser | [→](https://github1s.com/cli/cli) | Read-only. Private repos need a pasted token |
@@ -261,6 +277,14 @@ git fetch origin pull/123/head:pr-123               # any PR, including closed o
 <br>
 
 ## Keyboard
+
+<div align="center">
+
+<img src=".github/social/keys.png" alt="Five keycaps: full stop for the editor, t for find file, y for permalink, b for blame, question mark for every key" width="760">
+
+</div>
+
+<br>
 
 | Key | Does | Worth knowing |
 |---|---|---|
@@ -510,6 +534,14 @@ Social preview images are 1280 × 640 and must be under 1 MB, and the upload ref
 
 Every list still repeats these. None of them work.
 
+<div align="center">
+
+<img src=".github/social/dead-tricks.png" alt="Three dead tricks struck through: /stargazers 404s, github-readme-stats returns 503, uithub.com requires a login" width="860">
+
+</div>
+
+<br>
+
 | The tip you have seen | Reality, checked 22 August 2026 |
 |---|---|
 | `/stargazers` and `/watchers` | 404 to the public since 30 June 2026, REST endpoints included |
@@ -526,6 +558,12 @@ Every list still repeats these. None of them work.
 | Tasklist blocks | Retired |
 | `actions/attest-build-provenance` | Now a wrapper. Call `actions/attest` |
 | The dispatch API returns 204 | Returns the run id, since 2026-03-10 |
+
+<br>
+
+## Share it
+
+Cards sized for every platform live in [`.github/social`](.github/social): `address-bar`, `diff`, `keys`, `dead-tricks` and `ten-tricks` at 1280 &times; 640, plus `square` at 1080 &times; 1080 for WhatsApp and Instagram.
 
 <br>
 
