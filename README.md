@@ -27,431 +27,505 @@
 [Profile](#profile) &nbsp;·&nbsp;
 [Dead tricks](#dead-tricks)
 
+<br>
+
+*Every code block has a copy button. Every **Try it** link is live, on a real repository.*
+
 </div>
 
 ---
 
 ## Start here
 
-The ten that surprise almost everyone.
+Ten that surprise almost everyone. Click any one and watch it work.
 
-| | You get | Type this |
-|---|---|---|
-| **Repo → MCP server** | Any public repo as a server your AI can read, nothing installed | `gitmcp.io/OWNER/REPO` |
-| **Repo → one prompt** | The whole codebase as a single text file | `gitingest.com/OWNER/REPO` |
-| **What changed in January** | A diff by date, on a repo you never cloned | `/compare/main@{2026-01-01}...main@{2026-02-01}` |
-| **Link one line of a README** | Line anchors that actually work on Markdown | `/blob/SHA/README.md?plain=1#L14` |
-| **Kill the whitespace noise** | A diff without reindentation | `/pull/123/files?w=1` |
-| **Watch one file** | An RSS feed for a single path | `/commits/main/README.md.atom` |
-| **Someone's SSH keys** | Public keys, ready for `authorized_keys` | `github.com/USERNAME.keys` |
-| **Find unclaimed work** | Open issues nobody has a PR for | `is:issue is:open -linked:pr` |
-| **Search definitions only** | Where it is defined, not the 400 call sites | `symbol:deleteRows` |
-| **Unstick a stale badge** | Force GitHub's image proxy to refetch | `curl -X PURGE https://camo.githubusercontent.com/HASH` |
+**1. Turn any repository into a server your AI can read.** Nothing to install.
+
+```
+https://gitmcp.io/OWNER/REPO
+```
+
+[Try it on cli/cli](https://gitmcp.io/cli/cli)
+
+<br>
+
+**2. Get a whole codebase as one text file**, sized for a prompt.
+
+```
+https://gitingest.com/OWNER/REPO
+```
+
+[Try it on cli/cli](https://gitingest.com/cli/cli)
+
+<br>
+
+**3. See what changed in January**, on a repository you have never cloned.
+
+```
+https://github.com/OWNER/REPO/compare/main@{2026-01-01}...main@{2026-02-01}
+```
+
+[Try it on cli/cli](https://github.com/cli/cli/compare/trunk@%7B2026-01-01%7D...trunk@%7B2026-02-01%7D)
 
 > [!NOTE]
-> `/stargazers` now 404s, `github-readme-stats` is unmaintained, `uithub.com` wants a login. [Everything else that quietly died](#dead-tricks).
+> Undocumented, and unlike local Git it needs no reflog: GitHub resolves the date server-side. Encode the braces as `%7B` and `%7D` in scripts.
+
+<br>
+
+**4. Link to one line of a README.** Line anchors do nothing without `?plain=1`.
+
+```
+https://github.com/OWNER/REPO/blob/SHA/README.md?plain=1#L14
+```
+
+[Try it on cli/cli](https://github.com/cli/cli/blob/trunk/README.md?plain=1#L14)
+
+<br>
+
+**5. Read a diff without the reindentation noise.**
+
+```
+https://github.com/OWNER/REPO/pull/123/files?w=1
+```
+
+[Try it on cli/cli](https://github.com/cli/cli/pull/9000/files?w=1)
+
+<br>
+
+**6. Subscribe to a single file.** RSS for one path, not the whole repository.
+
+```
+https://github.com/OWNER/REPO/commits/main/README.md.atom
+```
+
+[Try it on cli/cli](https://github.com/cli/cli/commits/trunk/README.md.atom)
+
+<br>
+
+**7. Take anyone's public SSH keys**, ready for `authorized_keys`.
+
+```
+https://github.com/USERNAME.keys
+```
+
+[Try it](https://github.com/Amey-Thakur.keys)
+
+<br>
+
+**8. Find work nobody has claimed.** Open issues with no pull request attached.
+
+```
+is:issue is:open -linked:pr
+```
+
+[Try it on cli/cli](https://github.com/cli/cli/issues?q=is%3Aissue+is%3Aopen+-linked%3Apr)
+
+<br>
+
+**9. Search definitions only**, instead of four hundred call sites.
+
+```
+symbol:NewClient
+```
+
+[Try it](https://github.com/search?q=symbol%3ANewClient&type=code)
+
+<br>
+
+**10. Unstick a badge that will not refresh.** GitHub proxies every external image through camo and caches it.
+
+```bash
+curl -X PURGE https://camo.githubusercontent.com/HASH
+```
+
+> [!TIP]
+> Right-click the stale badge and copy its image address to get the camo URL.
+
+<br>
+
+> [!IMPORTANT]
+> `/stargazers` now returns 404 to the public, `github-readme-stats` is unmaintained, and `uithub.com` demands a login. [Everything else that quietly died](#dead-tricks).
 
 <br>
 
 ## One-word swaps
 
-Change one word in the address bar. Same repo, different thing.
+Change one word in the address bar. Same repository, entirely different thing.
 
 <div align="center">
 
-`github.com/OWNER/REPO` → `github`**`1s`**`.com/OWNER/REPO`
+`github.com/owner/repo` &nbsp;→&nbsp; `github`**`1s`**`.com/owner/repo`
 
 </div>
 
 <br>
 
-| Swap to | You get | Catch |
-|---|---|---|
-| `github1s.com` | VS Code in the browser, read-only | Private repos need a token pasted into the status bar |
-| `github.dev` &nbsp;or press <kbd>.</kbd> | GitHub's editor, with write access | No compute: no terminal, no builds |
-| `gitingest.com` | The repo as one text file for a prompt | Skips files over 50 kB by default, silently |
-| `gitmcp.io` | An MCP server for your AI | `gitmcp.io/docs` is a floating endpoint that can point anywhere. Scope it |
-| `deepwiki.com` | A generated wiki, plus its own MCP | Public repos only; private needs `mcp.devin.ai` and a token |
-| `gitdiagram.com` | An architecture diagram | An LLM reading the file tree, not real import analysis |
-| `gitreverse.com` | A "build this" prompt | Reads metadata and the README only |
-| `gitpodcast.com` | A spoken walkthrough | In-depth version needs sign-in |
-| `github.gg` | Diagrams and a repo scorecard | Three free reviews per install |
-| `pr.new/github.com/…` | StackBlitz Codeflow | Still beta |
-| `forgithub.com` | The index of every swap tool | Not checked for rot; still lists two dead sites |
+| Swap to | You get | Try it | Catch |
+|---|---|---|---|
+| `github1s.com` | VS Code in the browser | [→](https://github1s.com/cli/cli) | Read-only. Private repos need a pasted token |
+| `github.dev` | The same editor, with write access | [→](https://github.dev/cli/cli) | No terminal, no builds. Press <kbd>.</kbd> from any repo |
+| `gitingest.com` | The repository as one prompt-sized file | [→](https://gitingest.com/cli/cli) | Silently skips files over 50 kB |
+| `gitmcp.io` | An MCP server for your AI | [→](https://gitmcp.io/cli/cli) | `gitmcp.io/docs` floats to any repo. Scope it |
+| `deepwiki.com` | A generated wiki, with its own MCP | [→](https://deepwiki.com/cli/cli) | Public repositories only |
+| `gitdiagram.com` | An architecture diagram | [→](https://gitdiagram.com/cli/cli) | An LLM reading the file tree, not import analysis |
+| `gitreverse.com` | A "build this from scratch" prompt | [→](https://gitreverse.com/cli/cli) | Reads the README and metadata only |
+| `forgithub.com` | The index of every swap tool | [→](https://forgithub.com/cli/cli) | Unmaintained. Two of its entries are dead |
 
 <br>
 
 ## URLs
 
-<details open>
-<summary><b>Diffs and patches</b></summary>
+### Diffs and patches
 
-<br>
+```
+/pull/123.diff                      plain unified diff
+/pull/123.patch                     mbox series, replays with git am
+/pull/123/files?w=1                 hide whitespace-only changes
+/commit/SHA?diff=split              side by side
+/compare/v1.0.0...v2.0.0.patch      a range the web page refuses to render
+/compare/main...OTHER_OWNER:main    across forks
+/compare/SHA~5...SHA                a commit against five before it
+```
 
-| You want | Type this | Catch |
-|---|---|---|
-| A PR as a unified diff | `/pull/N.diff` | 302s to another host, `curl` needs `-L` |
-| A PR as an applyable patch series | `/pull/N.patch` | One mbox message per commit, replays with `git am` |
-| A diff the web page refuses to render | `/compare/A...B.patch` | No size cap, a tag range can be 74 messages |
-| A diff by date | `/compare/main@{2026-01-01}...main@{2026-02-01}` | Undocumented. Encode braces as `%7B` in scripts |
-| A diff across forks | `/compare/main...OTHER_OWNER:main` | If a branch and tag share a name, the branch wins |
-| The last five commits' worth | `/compare/SHA~5...SHA` | |
-| No whitespace noise | `?w=1` on any diff URL | Undocumented since 2011. `.diff` and `.patch` ignore it |
-| Side-by-side | `?diff=split` (or `unified`) | Combines: `?diff=split&w=1` |
-
-**`A...B` is not `A..B`.** Three dots diff from the merge base, which is what a PR shows. Two dots diff the current tips, so the result changes whenever the base branch moves.
-
-</details>
-
-<details open>
-<summary><b>Files, lines and blame</b></summary>
-
-<br>
-
-| You want | Type this | Catch |
-|---|---|---|
-| Line numbers on a rendered README | `?plain=1` | Must come **before** the `#L14` fragment |
-| A permalink to lines 10–20 | `#L10-L20`, or press <kbd>y</kbd> | <kbd>y</kbd> gives no visual confirmation |
-| A permalink that renders as a snippet | Copy permalink from the kebab menu | Only renders inside the repo it came from |
-| Raw file, always fresh | `raw.githubusercontent.com/…/SHA/PATH` | Branch URLs are CDN-cached about five minutes |
-| A gist raw URL that never changes | `gist.githubusercontent.com/U/ID/raw/REVISION_SHA/FILE` | Without the SHA it always serves latest |
-| Blame | swap `/blob/` for `/blame/`, or <kbd>b</kbd> | `.git-blame-ignore-revs` hides commits here but not locally |
-| Blame, ignoring the ignore file | append `~` to the SHA in the URL | |
-| The file finder | `/find/BRANCH`, or <kbd>t</kbd> | Hides `vendor`, `build`, `log`, `tmp` and five more |
-
-</details>
-
-<details open>
-<summary><b>Downloads, feeds and identity</b></summary>
-
-<br>
-
-| You want | Type this | Catch |
-|---|---|---|
-| A tarball of any ref | `/archive/refs/heads/BRANCH.tar.gz` | 302s to `codeload.github.com`, often firewalled |
-| A tag with slashes in it | `/archive/refs/tags/cli/v2.12.0.zip` | |
-| The newest release asset, forever | `/releases/latest/download/tool.zip` | Filename must stay identical across releases |
-| RSS for a repo, branch or one file | `/commits/main/README.md.atom` | Every feed shares a title, rename them in your reader |
-| RSS for releases, tags, discussions | `/releases.atom`, `/tags.atom`, `/discussions.atom` | |
-| Anyone's SSH keys | `github.com/USERNAME.keys` | |
-| Anyone's PGP key | `github.com/USERNAME.gpg` | Returns an empty block, not a 404, if none uploaded |
-| Anyone's avatar at any size | `github.com/USERNAME.png?size=100` | Parameter is `size`, not `s` |
-| Every PR ref, including closed | `/OWNER/REPO.git/info/refs?service=git-upload-pack` | pkt-line binary, not JSON |
-| The wiki as a git repo | `git clone …/OWNER/REPO.wiki.git` | Separate repo. Never in a clone, never in an archive |
-
-</details>
-
-<details open>
-<summary><b>Prefilled forms</b></summary>
-
-<br>
-
-| You want | Type this |
-|---|---|
-| A prefilled issue | `/issues/new?title=Bug&body=Details&labels=bug&assignees=octocat` |
-| A prefilled PR | `/compare/main...branch?quick_pull=1&title=Fix&template=release.md` |
-| A prefilled release | `/releases/new?tag=v1.0.1&title=v1.0.1&prerelease=1` |
-| Commits by author and date | `/commits/main?author=USER&since=2025-01-01&until=2025-01-08` |
+[A patch series](https://github.com/cli/cli/pull/9000.patch) &nbsp;·&nbsp; [Split view](https://github.com/cli/cli/commit/HEAD?diff=split)
 
 > [!WARNING]
-> Permission is checked per parameter and failure is all-or-nothing. One parameter you lack rights for turns the whole URL into a 404, not a partial form.
+> **`A...B` is not `A..B`.** Three dots diff from the merge base, which is what a pull request shows. Two dots diff the current tips, so the answer changes whenever the base branch moves. Say which one you used when you paste a compare link into a bug report.
 
-</details>
+<br>
+
+### Files, lines and blame
+
+```
+/blob/REF/README.md?plain=1                 line numbers on rendered Markdown
+/blob/REF/PATH#L10-L20                      highlight a range
+/blame/REF/PATH                             blame, or press b
+/find/BRANCH                                the file finder, or press t
+raw.githubusercontent.com/O/R/SHA/PATH      raw, immutable, uncached
+```
+
+[Blame a file](https://github.com/cli/cli/blame/trunk/README.md) &nbsp;·&nbsp; [Open the file finder](https://github.com/cli/cli/find/trunk)
+
+> [!CAUTION]
+> A raw URL carrying a **branch** name is cached about five minutes, so a fresh push looks like it did nothing. Swap in the commit SHA and it is immutable and instant.
+
+> [!NOTE]
+> The file finder hides `.git`, `.hg`, `.sass-cache`, `.svn`, `build`, `dot_git`, `log`, `tmp` and `vendor`, so a file you know exists can look missing. Blame hides anything in `.git-blame-ignore-revs`; append `~` to the SHA in the URL to see past it.
+
+<br>
+
+### Downloads, feeds and identity
+
+```
+/archive/refs/heads/BRANCH.tar.gz     any branch as a tarball
+/archive/refs/tags/TAG.zip            any tag, slashes included
+/releases/latest/download/tool.zip    always the newest release asset
+/commits/main/README.md.atom          RSS for one file
+/releases.atom  /tags.atom  /discussions.atom
+github.com/USERNAME.keys              public SSH keys
+github.com/USERNAME.gpg               public PGP key
+github.com/USERNAME.png?size=100      avatar, any size
+```
+
+[Releases feed](https://github.com/cli/cli/releases.atom) &nbsp;·&nbsp; [Latest release](https://github.com/cli/cli/releases/latest) &nbsp;·&nbsp; [An avatar](https://github.com/Amey-Thakur.png?size=100)
+
+> [!NOTE]
+> `.gpg` never 404s. An account with no key returns a well-formed but empty armored block, so check the body rather than the status code. Archive URLs redirect to `codeload.github.com`, which strict firewalls block.
+
+<br>
+
+### Two hidden repositories
+
+```bash
+git clone https://github.com/OWNER/REPO.wiki.git    # the wiki is its own repo
+git fetch origin pull/123/head:pr-123               # any PR, including closed ones
+```
+
+> [!WARNING]
+> A wiki is never in a clone and never in an archive download. Backing up the repository does not back up the wiki.
+
+<br>
+
+### Prefilled forms
+
+```
+/issues/new?title=Bug&body=Steps&labels=bug&assignees=octocat
+/compare/main...branch?quick_pull=1&title=Fix&template=release.md
+/releases/new?tag=v1.0.1&title=v1.0.1&prerelease=1
+/commits/main?author=USER&since=2025-01-01&until=2025-01-08
+```
+
+> [!CAUTION]
+> Permission is checked per parameter, and failure is all-or-nothing. One parameter you lack rights for turns the whole URL into a 404 rather than a partly filled form.
 
 <br>
 
 ## Keyboard
 
-| Key | Does | Catch |
+| Key | Does | Worth knowing |
 |---|---|---|
-| <kbd>?</kbd> | Shortcuts for *this* page | The docs list only some; the dialog is the authority |
+| <kbd>?</kbd> | Shortcuts for the page you are on | The docs list only some. The dialog is the authority |
 | <kbd>t</kbd> | Fuzzy file finder | Hides nine directories |
-| <kbd>y</kbd> | Branch URL → commit permalink | No confirmation, page does not reload |
-| <kbd>.</kbd> | Opens github.dev | <kbd>></kbd> for a new tab |
+| <kbd>y</kbd> | Rewrites a branch URL to a permalink | No confirmation, no reload |
+| <kbd>.</kbd> | Opens github.dev | <kbd>></kbd> opens it in a new tab |
 | <kbd>b</kbd> | Blame | |
-| <kbd>l</kbd> | Label filter | <kbd>Alt</kbd>+click a label to **exclude** it |
-| <kbd>r</kbd> | Quote selected text in a reply | Appends, so repeats stack |
-| <kbd>Alt</kbd>+<kbd>↑</kbd> | Move focus **into** a hovercard | The only keyboard route to hovercard content |
-| <kbd>Ctrl</kbd>+<kbd>.</kbd> then <kbd>Ctrl</kbd>+<kbd>N</kbd> | Insert saved reply N | Max 100, personal not shared |
-| <kbd>Ctrl</kbd>+<kbd>G</kbd> | Suggestion block from selected lines | Extra lines in the block get deleted on apply |
-| <kbd>g</kbd> <kbd>c</kbd> / <kbd>i</kbd> / <kbd>p</kbd> / <kbd>a</kbd> / <kbd>s</kbd> | Code, Issues, PRs, Actions, Security | <kbd>g</kbd> <kbd>s</kbd> is Security, not Settings |
-| <kbd>Alt</kbd>+click a file caret | Collapse **every** diff | Announced 2018, never documented |
-| <kbd>Alt</kbd>+click a resolved thread | Toggle all outdated threads | |
-| <kbd>Shift</kbd>+<kbd>T</kbd> in Actions logs | Timestamps | Off by default, so waits are invisible |
-| <kbd>e</kbd> in Projects | Archive selection | **No confirmation**, acts on the whole selection |
-| <kbd>Ctrl</kbd>+<kbd>K</kbd> | Command palette | Off by default; enable in Feature preview |
+| <kbd>l</kbd> | Label filter | <kbd>Alt</kbd> + click a label to **exclude** it |
+| <kbd>r</kbd> | Quotes the selected text in a reply | Appends, so repeats stack |
+| <kbd>Alt</kbd> <kbd>↑</kbd> | Moves focus **into** a hovercard | The only keyboard route to one |
+| <kbd>Ctrl</kbd> <kbd>.</kbd> | Saved replies, then <kbd>Ctrl</kbd> <kbd>N</kbd> | Max 100, personal, not shareable |
+| <kbd>Ctrl</kbd> <kbd>G</kbd> | Suggestion block from the selected lines | Extra lines get deleted when applied |
+| <kbd>g</kbd> then <kbd>c</kbd> <kbd>i</kbd> <kbd>p</kbd> <kbd>a</kbd> <kbd>s</kbd> | Code, Issues, PRs, Actions, Security | <kbd>g</kbd> <kbd>s</kbd> is Security, never Settings |
+| <kbd>Shift</kbd> <kbd>T</kbd> | Timestamps in Actions logs | Off by default, so long waits are invisible |
+| <kbd>e</kbd> | Archives the selection in Projects | **No confirmation.** Takes the whole selection |
 
-**Turn it all off** at `/settings/accessibility` → deselect "Character keys". Modifier shortcuts keep working.
+**Two modifier clicks nobody documents.** <kbd>Alt</kbd> + click a file's caret collapses *every* diff in the pull request. <kbd>Alt</kbd> + click a resolved thread toggles *all* outdated threads.
+
+> [!TIP]
+> Turn the lot off at [github.com/settings/accessibility](https://github.com/settings/accessibility) by deselecting "Character keys". Modifier shortcuts keep working.
 
 <br>
 
 ## Search
 
-<details open>
-<summary><b>Code</b></summary>
+### Code
 
-<br>
+```
+/sparse.*index/                regex, no look-around, escape every slash
+/(?-i)True/                    case-sensitive, which is not the default
+symbol:NewClient               definitions only, never call sites
+path:/src/**/*.js              anchored glob
+content:README.md              the text, not the filename
+NOT is:fork                    drop forks
+```
 
-| You want | Type this | Catch |
-|---|---|---|
-| Regex | `/sparse.*index/` | No look-around. Escape every `/` |
-| Case-sensitive | `/(?-i)True/` | Search is case-insensitive by default, silently |
-| Definitions only | `symbol:deleteRows` | Never matches call sites |
-| A path glob | `path:/src/**/*.js` | Quoting **disables** globbing, no warning |
-| Text, not filenames | `content:README.md` | The fix for drowning in path hits |
-| Excluding forks | `NOT is:fork` | Forks index only if they outstar the parent |
-| Across a whole enterprise | `enterprise:octocorp` | Enterprise Cloud only |
+[Run a symbol search](https://github.com/search?q=symbol%3ANewClient&type=code)
 
 > [!IMPORTANT]
-> An absent result never proves the code is absent. Code search skips files over 350 KiB, any file with a line over 4,096 bytes, non-UTF-8 files, and every branch except the default one. Results cap at 100.
-
-</details>
-
-<details open>
-<summary><b>Issues and pull requests</b></summary>
+> An absent result never proves the code is absent. Code search skips every branch except the default one, files over 350 KiB, any file with a line over 4,096 bytes, and non-UTF-8 files. Results stop at 100, and quoting a `path:` value silently disables globbing.
 
 <br>
 
-| You want | Type this | Catch |
-|---|---|---|
-| Issues nobody is working on | `is:issue is:open -linked:pr` | Only closing references count |
-| Closed as done vs abandoned | `reason:completed` / `reason:"not planned"` | A third reason, duplicate, matches neither |
-| Reviews actually assigned to you | `user-review-requested:@me` | `review-requested:` clears once you review |
-| Untriaged | `no:label no:assignee no:milestone` | These cannot be negated with `-` |
-| By issue type or field | `type:"Bug"`, `field.Priority:High` | Newest qualifiers, missing from every other list |
-| Popular threads | `interactions:>2000` | Sums reactions **and** comments |
-| Ranked by 👍 | `sort:reactions-+1` | 👎 is `sort:reactions--1`, two hyphens |
-| Anything assigned | `assignee:*` | One repository at a time only |
-| Skipping archived repos | `archived:false` | The filter every org dashboard forgets |
-| Boolean logic | `(type:"Bug" AND assignee:me) OR label:urgent` | Five levels of nesting, hard ceiling |
+### Issues and pull requests
 
-`label:a,b` is OR. `label:a label:b` is AND. Nothing on screen tells you which you built.
+```
+is:issue is:open -linked:pr           nobody is working on these
+reason:completed                      closed as done
+reason:"not planned"                  closed as abandoned
+user-review-requested:@me             asked of you, not of your team
+no:label no:assignee no:milestone     untriaged
+type:"Bug"  field.Priority:High       issue types and fields
+archived:false                        skip archived repositories
+interactions:>2000                    reactions plus comments
+sort:reactions-+1                     ranked by thumbs up
+```
 
-</details>
+[See unclaimed issues](https://github.com/cli/cli/issues?q=is%3Aissue+is%3Aopen+-linked%3Apr)
 
-<details open>
-<summary><b>Repositories, commits and the API</b></summary>
+> [!WARNING]
+> `label:a,b` means **or**. `label:a label:b` means **and**. Nothing on screen tells you which you built. Closing an issue as *duplicate* matches neither `reason:completed` nor `reason:"not planned"`, so two-bucket queries lose them silently.
 
 <br>
 
-| You want | Type this |
-|---|---|
-| By topic count | `topics:>3` (not `topic:`) |
-| By size, in kilobytes | `size:1000..2000` |
-| By org custom property | `org:NAME props.production:true` |
-| A commit's children | `parent:SHA` |
-| Merge commits only | `merge:true` |
-| Saved queries | type `saved:` in the search bar |
-| Semantic issue search | REST `/search/issues?search_type=semantic` |
+### Repositories and commits
 
-Every search API result set stops at 1,000. When a query times out the API returns `incomplete_results: true` **with a 200**, so partial answers look complete.
+```
+topics:>3                        by topic count, not topic: name
+size:1000..2000                  kilobytes, not megabytes
+org:NAME props.production:true   organisation custom properties
+parent:SHA                       a commit's children
+merge:true                       merge commits only
+saved:                           type this in the search bar for saved queries
+```
 
-</details>
+> [!NOTE]
+> Every search API result set stops at 1,000. When a query times out the API returns `incomplete_results: true` **with a 200 status**, so a partial answer looks complete.
 
 <br>
 
 ## Repository
 
-<details open>
-<summary><b>CODEOWNERS, the four rules that break it</b></summary>
+### CODEOWNERS, and the four rules that quietly break it
 
-<br>
-
-| Rule | Consequence |
-|---|---|
-| `docs/*` is one level deep, `/docs/` is recursive | Nested files silently go to the wrong owner |
-| **Last** match wins, not the most specific | A `*` catch-all at the bottom disables the whole file |
-| Invalid lines are skipped silently | And a team without write access is dropped |
-| Read from the **base** branch | A PR that adds itself as owner cannot self-apply |
-
-</details>
-
-<details open>
-<summary><b>Pull requests, merging, rules</b></summary>
-
-<br>
-
-| You want | Do this | Catch |
-|---|---|---|
-| Several PR templates | `.github/PULL_REQUEST_TEMPLATE/` + `?template=x.md` | No chooser UI, unlike issues |
-| Close an issue in another repo | `Fixes owner/repo#100` | Ignored unless the PR targets the default branch |
-| Quiet work in progress | Open as draft | Defers code-owner pings until ready |
-| A merge queue that works | `on: merge_group:` in every required workflow | Without it the queue waits forever, silently |
-| Rules that stack | Rulesets + old branch protection both apply | Most restrictive wins; half-migrations block people |
-| Rules across the fork network | Push rulesets | The only rules that reach repos you do not own |
-| Release notes, shaped | `.github/release.yml` | `*` is a catch-all, categories run in order |
+```
+/docs/     @team     recursive
+docs/*     @team     ONE level deep, and nothing warns you
+```
 
 > [!CAUTION]
-> A required check on a path-filtered workflow blocks the PR **forever**. Skipped is not passed, and there is no timeout. Fix it with a second workflow of the same job name on the complementary paths that exits 0.
-
-</details>
-
-<details open>
-<summary><b>Pages, wikis, gists, releases</b></summary>
+> **Last match wins, not most specific.** A `* @org/everyone` catch-all at the bottom, which reads like a sensible fallback, disables every rule above it.
+>
+> Invalid lines are skipped silently. A team without write access is dropped silently. The file is read from the **base** branch, so a pull request that adds itself as an owner cannot apply that rule to itself.
 
 <br>
 
-| Thing | What nobody tells you |
-|---|---|
-| Actions-based Pages | The `CNAME` file is ignored entirely. Set the domain in Settings |
-| `.nojekyll` | Without it Jekyll deletes every `_next`, `_app`, `_assets` directory |
-| Secret gists | Unlisted, not private. Public → secret is impossible |
-| Immutable releases | Delete one and the tag name can never be reused |
-| Template repos | Unrelated histories, so no PRs between template and copy |
-| Deleting a private repo | Takes its private forks with it |
-| Q&A answers | Only Q&A-format categories accept them. 25 categories max |
+### Merging
 
-</details>
+> [!CAUTION]
+> **A required check skipped by path filtering blocks the pull request forever.** Skipped is not passed, and no timeout converts one into the other. Fix it with a second workflow of the same job name, on the complementary paths, that exits 0.
+
+A merge queue stalls silently unless every required workflow listens for it:
+
+```yaml
+on:
+  merge_group:
+```
+
+`Fixes owner/repo#100` closes an issue in another repository, but is ignored unless the pull request targets the **default** branch. Open as a draft to defer code-owner pings until you are ready.
+
+<br>
+
+### Rules, releases and Pages
+
+- **Rulesets stack, they do not replace.** Several rulesets plus any legacy branch protection all apply at once and the most restrictive wins, which is why half-finished migrations block people for reasons nobody can find.
+- **Push rulesets reach into forks.** Restricting paths, extensions or file size is the only rule family that applies to repositories you do not own.
+- **`.github/release.yml`** shapes autogenerated release notes. `*` is the catch-all, and categories are evaluated in order.
+- **Immutable releases are one-way.** Delete one and the tag name can never be reused.
+- **Actions-based Pages ignores `CNAME` entirely.** Set the custom domain in Settings; a generator that writes `CNAME` into the build does nothing.
+- **`.nojekyll`, or lose your build.** Without it Jekyll deletes every directory starting with an underscore, which means `_next`, `_app` and `_assets`.
+- **Secret gists are unlisted, not private,** and public can never go back to secret.
 
 <br>
 
 ## Actions
 
-<details open>
-<summary><b>The silent failures</b></summary>
-
-<br>
+### The failures that give no error
 
 | Symptom | Cause | Fix |
 |---|---|---|
-| A workflow never fires after another one pushed | `GITHUB_TOKEN` actions do not trigger workflows | Use an App token or PAT |
-| `if:` fires on `"false"` | `github.event.inputs` stringifies booleans | Use the `inputs` context |
-| `actions/checkout` 403s | Naming one permission sets all others to `none` | List `contents: read` too |
-| Cron stopped months ago | Public repos disable schedules after 60 days idle | Push anything, or re-enable in Actions |
-| Cache never warms on a PR | Untrusted triggers get a read-only cache token | No opt-out. Warm on the default branch |
-| First build on every branch is slow | Caches do not cross sibling branches | Build the cache on the default branch |
-| A matrix job's output vanished | All legs write the same key, last wins | Use artifacts |
-| An output silently disappeared | It looked like a secret and got masked | Check the run log for the skip warning |
+| A workflow never fires after another one pushed | `GITHUB_TOKEN` actions do not trigger workflows | Use an App token or a PAT |
+| `if:` fires on `"false"` | `github.event.inputs` turns booleans into strings | Use the `inputs` context |
+| `actions/checkout` suddenly 403s | Naming one permission sets every other to `none` | List `contents: read` as well |
+| The cron stopped months ago | Public repos disable schedules after 60 days idle | Push anything, or re-enable in Actions |
+| The cache never warms on a pull request | Untrusted triggers get a read-only cache token | No opt-out. Warm it on the default branch |
+| Every new branch builds slowly | Caches do not cross sibling branches | Build the cache on the default branch |
+| A matrix job's output vanished | Every leg writes the same key, last wins | Use artifacts instead |
+| An output disappeared with no error | It resembled a secret and was masked | Look for the skip warning in the log |
 | `workflow_run` linted the wrong code | It runs on the default branch | Check out the triggering SHA explicitly |
 
-</details>
+<br>
 
-<details open>
-<summary><b>Worth knowing</b></summary>
+### Worth having
+
+```yaml
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: choice          # real form controls on manual runs
+        options: [staging, production]
+
+concurrency:
+  group: deploy
+  queue: max                  # queue up to 100 instead of cancelling
+
+steps:
+  - run: make assets
+    background: true          # parallel steps in one job, added June 2026
+  - wait
+  - run: echo "### Report" >> "$GITHUB_STEP_SUMMARY"
+```
+
+Set a repository variable `ACTIONS_STEP_DEBUG` to `true` for debug logs without touching the YAML. Run workflows locally with `act`, which ignores `concurrency` and `permissions`. Audit them with `zizmor`, and type-check expressions with `actionlint`.
 
 <br>
 
-| You want | Do this |
-|---|---|
-| Real form controls on manual runs | `workflow_dispatch` with `type: choice`, `boolean`, `environment` |
-| Parallel steps in one job | `background: true`, then `wait` (added June 2026) |
-| Queue instead of cancel | `concurrency: {queue: max}` |
-| A Markdown report on the run page | `echo "..." >> "$GITHUB_STEP_SUMMARY"` |
-| Multiline step output | Heredoc with a random delimiter into `$GITHUB_OUTPUT` |
-| An artifact from another run | `download-artifact` with `run-id` **and** `github-token` |
-| Debug logs without editing YAML | Repo variable `ACTIONS_STEP_DEBUG=true` |
-| Skip a run | `[skip ci]` in the commit message |
-| To run it locally | `act`, which ignores `concurrency` and `permissions` |
-| To audit for injection | `zizmor`, and `actionlint` for expression types |
-
-</details>
-
-<details open>
-<summary><b>The two that get repositories taken over</b></summary>
-
-<br>
+### The two that hand over your repository
 
 > [!CAUTION]
-> **`pull_request_target` + checking out the PR head.** The job runs with your secrets and a write token, then executes a stranger's `postinstall` script. Nothing has to look malicious.
+> **`pull_request_target` plus a checkout of the pull request head.** The job runs with your secrets and a write token, then executes a stranger's `postinstall` script. Nothing in the diff has to look malicious.
 >
-> **`${{ github.event.* }}` inside `run:`.** Substitution happens before the shell sees the line, so quoting does not save you. Pass it through `env:` and reference the variable.
+> **`${{ github.event.* }}` inside `run:`.** Substitution happens before the shell ever sees the line, so quoting does not save you.
 
-Pin every third-party action to a full 40-character SHA. Short SHAs are rejected; Dependabot keeps the pin and the version comment in sync.
+```yaml
+- env:
+    TITLE: ${{ github.event.pull_request.title }}   # safe: data, not script
+  run: echo "$TITLE"
+```
 
-</details>
+Pin every third-party action to a full 40-character SHA. Short SHAs are rejected, and Dependabot keeps both the pin and its version comment current.
 
 <br>
 
 ## Security
 
-| Default that surprises people | Reality |
-|---|---|
-| Push protection alerts you when bypassed | Not on public repos, unless repo-level protection is also on |
-| CodeQL keeps scanning | It stops after six months with no pushes |
-| Dependabot reads your Actions secrets | Different store entirely, under Settings → Dependabot |
-| Dependabot watches `.github/workflows` | Only if `directory: "/"`. The intuitive path finds nothing |
-| Your alerts are all shown | A preset rule auto-dismisses npm dev-dependency alerts on public repos |
-| A leaked key shows in Security | Partner-pattern secrets go straight to the provider, never your tab |
-| Groups cover security updates | Only with `applies-to: security-updates` |
-| `cooldown` delays everything | Security fixes ignore it |
+Defaults that are not what people assume.
 
-| You want | Do this |
+| You probably think | Actually |
 |---|---|
-| A CVE | Draft a security advisory, click Request CVE. About 72 hours |
-| A private report channel | Enable private vulnerability reporting. **Off by default** |
-| One policy for every repo | `SECURITY.md` in a **public** `.github` repo |
-| Forged commits flagged | Vigilant mode, under SSH and GPG keys |
-| A real provenance check | `gh attestation verify --signer-workflow …`, not the bare command |
-| An SBOM | `GET /repos/O/R/dependency-graph/sbom` |
-| To block bad dependencies in review | `dependency-review-action` |
+| Bypassing push protection raises an alert | Not on public repos, unless repository-level protection is also on |
+| CodeQL keeps scanning | It stops after six months with no pushes |
+| Dependabot reads your Actions secrets | A different store entirely, under Settings → Dependabot |
+| Dependabot watches `.github/workflows` | Only with `directory: "/"`. The intuitive path finds nothing |
+| You see all your alerts | A preset rule auto-dismisses npm dev-dependency alerts on public repos |
+| A leaked key appears in your Security tab | Partner-pattern secrets go straight to the provider instead |
+| `cooldown` delays everything | Security fixes ignore it, and ignore the open-PR limit |
 
 > [!WARNING]
-> OIDC subject claims changed format for repositories created after 15 July 2026. A cloud trust policy copied from an older repo silently never matches.
+> OIDC subject claims changed format for repositories created after **15 July 2026**. A cloud trust policy copied from an older repository silently never matches.
+
+Free and off by default: **private vulnerability reporting**, the only private channel a researcher has. Free and worth turning on: **vigilant mode**, which flags forged unsigned commits as Unverified. Free on public repositories: **secret scanning** across history, branches, issues, wikis and gists.
+
+```bash
+gh attestation verify ./app -R OWNER/REPO \
+  --signer-workflow OWNER/REPO/.github/workflows/release.yml
+```
+
+> [!NOTE]
+> Without `--signer-workflow` or `--signer-repo`, `gh attestation verify` accepts almost any attestation from anywhere. The bare command is not the check you think it is.
 
 <br>
 
 ## Profile
 
-<details open>
-<summary><b>The README itself</b></summary>
+```
+USERNAME/USERNAME            a public repo named exactly your username
+.github/profile/README.md    an organisation's profile
+.github/                     one public repo, defaults for every repo you own
+```
 
-<br>
+> [!CAUTION]
+> **`.github/README.md` outranks your root README.** The lookup order is `.github/`, then the root, then `docs/`. A contributor note in the wrong place replaces your front page, and nothing tells you.
 
-| You want | Do this | Catch |
-|---|---|---|
-| A profile README | Public repo named exactly your username | Break any condition and it vanishes silently |
-| An org profile | `.github` repo → `profile/README.md` | Personal accounts cannot use this path |
-| Defaults for every repo you own | A **public** `.github` repo | Private ones are ignored |
-| Dark and light images | `<picture>` + `prefers-color-scheme` | `#gh-dark-mode-only` is deprecated |
-| A stale badge refreshed | `curl -X PURGE` the camo URL | Use sparingly |
-| Sizing an image | `<img width="500">` | Only nine HTML tags are filtered, the rest work |
-| A collapsible section | `<details open><summary>` | Needs a blank line before Markdown inside |
+**Why your commit is missing from the graph.** The author email must be linked to your account, the repository must not be a fork, and the commit must be on the default branch or on `gh-pages`, which is the one special case nobody knows.
 
-**`.github/README.md` outranks your root README.** Search order is `.github/`, root, `docs/`. A contributor note in the wrong place replaces your front page.
+**Why your stats card broke.** `github-readme-stats` is unmaintained and its shared instance returns 503. Generate cards inside your own Actions run instead. Badges go blank because shields.io runs on donated rate limit, and you can lend yours at [img.shields.io/github-auth](https://img.shields.io/github-auth).
 
-</details>
+**Why your snake stopped moving.** Sixty days of repository inactivity disables scheduled workflows.
 
-<details open>
-<summary><b>Contributions, cards and badges</b></summary>
+```html
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="dark.png">
+  <img src="light.png" alt="">
+</picture>
+```
 
-<br>
+> [!TIP]
+> Only nine HTML tags are stripped from GitHub Markdown: `title`, `textarea`, `style`, `xmp`, `iframe`, `noembed`, `noframes`, `script` and `plaintext`. Everything else works, including `<img width>`, `<details>` and `<kbd>`. This README uses all three.
 
-| Question | Answer |
-|---|---|
-| Why is my commit not on the graph? | Email must be linked, repo must not be a fork, branch must be default **or `gh-pages`** |
-| Where is the contribution calendar API? | GraphQL only. No REST endpoint exists |
-| Why did my stats card break? | `github-readme-stats` is unmaintained; the shared instance 503s |
-| Why do badges go blank at random? | shields.io runs on donated rate limit. Lend yours at `/github-auth` |
-| Why did my snake stop moving? | 60 days of repo inactivity disables scheduled workflows |
-| A badge from my own JSON? | `img.shields.io/endpoint?url=…` with `schemaVersion`, `label`, `message` |
-| Social preview size? | 1280 × 640, under 1 MB. It refuses rather than resizes |
-| Topic limits? | 20 max, 50 chars. The API `PUT` replaces the **whole** set |
-| Wrong language bar? | `.gitattributes` with `linguist-vendored`, `linguist-generated` |
-
-</details>
+Social preview images are 1280 × 640 and must be under 1 MB, and the upload refuses rather than resizes. Topics cap at 20, and the API `PUT` replaces the whole set rather than adding to it.
 
 <br>
 
 ## Dead tricks
 
-Stop recommending these.
+Every list still repeats these. None of them work.
 
-| The tip you have seen | Reality on 22 August 2026 |
+| The tip you have seen | Reality, checked 22 August 2026 |
 |---|---|
-| `/stargazers`, `/watchers` | 404 to the public since 30 June 2026. The REST endpoints too |
-| star-history chart embeds | Returns an SVG saying the data is restricted |
-| `github-readme-stats.vercel.app` | Unmaintained, shared instance returning 503 |
-| `uithub.com` | Sign-in wall, even for public repos |
+| `/stargazers` and `/watchers` | 404 to the public since 30 June 2026, REST endpoints included |
+| star-history chart embeds | An SVG reading "GitHub restricted access to star data" |
+| `github-readme-stats.vercel.app` | Unmaintained. The shared instance returns 503 |
+| `uithub.com` | 401 Unauthorized, even for a public repository |
 | `openrepowiki.xyz` | A GoDaddy for-sale page |
 | `talktogithub.com` | Ad-parked |
 | "Octotree is free and open source" | The shipping extension is proprietary |
-| Gitpod | Sunset 15 October 2025, now Ona |
-| <kbd>x</kbd> to select issues | Never existed |
-| `#gh-dark-mode-only` | Deprecated, use `<picture>` |
-| `directory: ".github/workflows"` | Finds nothing, use `"/"` |
+| Gitpod | Sunset 15 October 2025. The company is now Ona |
+| <kbd>x</kbd> selects issues | Never existed |
+| `#gh-dark-mode-only` | Deprecated. Use `<picture>` |
+| `directory: ".github/workflows"` | Finds nothing. Use `"/"` |
 | Tasklist blocks | Retired |
-| `actions/attest-build-provenance` | Now a wrapper, call `actions/attest` |
-| Dispatch API returns 204 | Returns the run id since 2026-03-10 |
+| `actions/attest-build-provenance` | Now a wrapper. Call `actions/attest` |
+| The dispatch API returns 204 | Returns the run id, since 2026-03-10 |
 
 <br>
 
@@ -459,7 +533,7 @@ Stop recommending these.
 
 Found a mistake, or a trick that belongs here? [Open an issue](https://github.com/Amey-Thakur/GITHUB-TRICKS/issues/new). A link to the source gets it in fastest.
 
-Every entry here was read against its primary source on 22 August 2026. Undocumented tricks are labelled, because they can change without notice.
+Every entry was read against its primary source on 22 August 2026. Undocumented tricks are labelled, because they can change without notice.
 
 <br>
 
