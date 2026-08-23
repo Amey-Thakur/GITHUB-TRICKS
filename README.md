@@ -18,17 +18,15 @@
 
 <br>
 
-[**Start here**](#start-here)
-
-**Browse** &nbsp; [One-word swaps](#one-word-swaps) &nbsp;·&nbsp; [URLs](#urls) &nbsp;·&nbsp; [Keyboard](#keyboard) &nbsp;·&nbsp; [Search](#search)
-
-**Build** &nbsp; [Repository](#repository) &nbsp;·&nbsp; [Actions](#actions) &nbsp;·&nbsp; [Security](#security)
-
-**Write** &nbsp; [Markdown](#markdown) &nbsp;·&nbsp; [Profile](#profile)
-
-**Automate** &nbsp; [gh CLI](#the-gh-cli) &nbsp;·&nbsp; [API](#the-api) &nbsp;·&nbsp; [Git](#git)
-
-**Run** &nbsp; [Codespaces](#codespaces) &nbsp;·&nbsp; [Copilot](#copilot) &nbsp;·&nbsp; [Dead tricks](#dead-tricks)
+| | |
+|---:|:---|
+| **Start here** | [The ten that surprise everyone](#start-here) |
+| **Browse** | [One-word swaps](#one-word-swaps) &nbsp;·&nbsp; [URLs](#urls) &nbsp;·&nbsp; [Keyboard](#keyboard) &nbsp;·&nbsp; [Search](#search) |
+| **Build** | [Repository](#repository) &nbsp;·&nbsp; [Actions](#actions) &nbsp;·&nbsp; [Security](#security) |
+| **Write** | [Markdown](#markdown) &nbsp;·&nbsp; [Profile](#profile) |
+| **Automate** | [gh CLI](#the-gh-cli) &nbsp;·&nbsp; [API](#the-api) &nbsp;·&nbsp; [Git](#git) |
+| **Run** | [Codespaces](#codespaces) &nbsp;·&nbsp; [Copilot](#copilot) |
+| **Reference** | [Dead tricks](#dead-tricks) &nbsp;·&nbsp; [Share it](#share-it) &nbsp;·&nbsp; [Contributing](#contributing) |
 
 <br>
 
