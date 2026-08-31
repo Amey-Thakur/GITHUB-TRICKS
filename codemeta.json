@@ -5,7 +5,7 @@
   "description": "Every GitHub feature, URL trick, keyboard shortcut, search qualifier, Actions pattern and third-party tool worth knowing, each one checked against the source. Covers URL parameters, the one-word hostname swaps that turn a repository into an editor, a prompt, a diagram or an MCP server, the full search syntax with its undocumented index limits, Actions traps that fail silently, security and supply-chain defaults, and profile README mechanics. Tips that no longer work are listed as dead rather than repeated.",
   "version": "1.0.0",
   "dateCreated": "2026-08-22",
-  "dateModified": "2026-08-22",
+  "dateModified": "2026-08-31",
   "license": "https://spdx.org/licenses/MIT",
   "codeRepository": "https://github.com/Amey-Thakur/GITHUB-TRICKS",
   "issueTracker": "https://github.com/Amey-Thakur/GITHUB-TRICKS/issues",
