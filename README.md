@@ -805,7 +805,7 @@ USERNAME/USERNAME            a public repo named exactly your username
 
 **Both badge techniques, rendered live from this repository.**
 
-[![codemeta](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FAmey-Thakur%2FGITHUB-TRICKS%2Fmain%2Fcodemeta.json&query=%24.version&label=codemeta&color=8250DF&logo=github&logoColor=white)](codemeta.json)
+[![codemeta](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FAmey-Thakur%2FGITHUB-TRICKS%2Fmain%2Fcodemeta.json&query=%24.version&label=CodeMeta&color=8250DF&logo=github&logoColor=white)](codemeta.json)
 [![served from](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FAmey-Thakur%2FGITHUB-TRICKS%2Fmain%2F.github%2Fbadge.json)](.github/badge.json)
 
 The first reads `$.version` straight out of [`codemeta.json`](codemeta.json) with a JSONPath query. The second is an endpoint badge: [`.github/badge.json`](.github/badge.json) is four keys in a static file, and shields renders whatever it says.
