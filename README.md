@@ -168,7 +168,7 @@ curl -X PURGE https://camo.githubusercontent.com/HASH
 <br>
 
 > [!IMPORTANT]
-> `/stargazers` now returns 404 to the public, `github-readme-stats` is unmaintained, and `uithub.com` demands a login. [Everything else that quietly died](#dead-tricks).
+> `/stargazers` now returns 404 to the public and `github-readme-stats` is unmaintained. [Everything else that quietly died](#dead-tricks).
 
 <br>
 
@@ -1083,7 +1083,7 @@ git bisect run ./test.sh          # exit 125 means "skip", not "bad"
 
 ### Run it, see the output
 
-Every command here was run against this repository on 22 August 2026, and the output is what came back.
+Every command here was run against this repository on 4 September 2026, and the output is what came back.
 
 **Score your own repository's community health.**
 
@@ -1093,7 +1093,7 @@ gh api repos/Amey-Thakur/GITHUB-TRICKS/community/profile \
 ```
 
 ```json
-{"health":42,"missing":["code_of_conduct","contributing","issue_template","pull_request_template"]}
+{"health":71,"missing":["issue_template","pull_request_template"]}
 ```
 
 It names exactly which community files you are missing, which is a faster audit than clicking through Insights. Remember it refuses to score a fork.
@@ -1144,11 +1144,11 @@ git ls-remote https://github.com/cli/cli 'refs/pull/*/merge' | wc -l
 ```
 
 ```
-5033
-177
+5107
+178
 ```
 
-Every closed pull request keeps its `/head` ref forever, while only 177 still have a usable `/merge` ref. That gap is why a merge ref you assumed exists so often does not.
+Every closed pull request keeps its `/head` ref forever, while only 178 still have a usable `/merge` ref. That gap is why a merge ref you assumed exists so often does not.
 
 <br>
 
@@ -1219,7 +1219,7 @@ gh codespace create -r OWNER/REPO --idle-timeout 15m   # only settable at creati
 ## Copilot
 
 > [!IMPORTANT]
-> **This section ages faster than any other.** Copilot ships breaking changes monthly: premium requests became AI credits on 1 June 2026, `gh copilot suggest` died in October 2025, and six models retire on 1 September 2026. Everything below was read against the docs on **22 August 2026**, and the model retirements were read again on **31 August 2026**. Check the date before you trust it.
+> **This section ages faster than any other.** Copilot ships breaking changes monthly: premium requests became AI credits on 1 June 2026, `gh copilot suggest` died in October 2025, and the 1 September 2026 retirement of six models has now passed. Everything below was read against the docs on **22 August 2026**, and the model retirements were read again on **31 August 2026**. Check the date before you trust it.
 
 ### Instruction files, and which ones actually apply
 
@@ -1426,7 +1426,7 @@ api.enterprise.githubcopilot.com    Enterprise
 | `used_copilot_coding_agent` metrics field | Removed 1 August 2026 for `used_copilot_cloud_agent` |
 
 > [!CAUTION]
-> Six models retire on **1 September 2026** across every Copilot surface, chat, inline edits, ask and agent modes, and completions: Gemini 3.1 Pro, Claude Opus 4.5 and 4.6, Claude Sonnet 4.5 and 4.6, and Raptor Mini. Anything pinning a model by name, `model:` in a prompt file, `--model` in a script, an API call, **breaks on that date** rather than silently upgrading. The stated replacements are Gemini 3.6 Flash, Claude Opus 4.7, 4.8 or 5, Claude Sonnet 5, and MAI-Code-1-Flash. One exception: **Claude Sonnet 4.6 stays available to individual subscribers on annual plans**, so a colleague on a different plan is not evidence that your own pin still works.
+> Six models were announced for retirement on **1 September 2026**, a date that has now passed, across every Copilot surface, chat, inline edits, ask and agent modes, and completions: Gemini 3.1 Pro, Claude Opus 4.5 and 4.6, Claude Sonnet 4.5 and 4.6, and Raptor Mini. Anything pinning a model by name, `model:` in a prompt file, `--model` in a script, an API call, **breaks on that date** rather than silently upgrading. The stated replacements are Gemini 3.6 Flash, Claude Opus 4.7, 4.8 or 5, Claude Sonnet 5, and MAI-Code-1-Flash. One exception: **Claude Sonnet 4.6 stays available to individual subscribers on annual plans**, so a colleague on a different plan is not evidence that your own pin still works.
 
 <br>
 
@@ -1448,18 +1448,16 @@ Every list still repeats these. None of them work.
 
 <div align="center">
 
-<img src=".github/social/dead-tricks.png" alt="Three dead tricks struck through: /stargazers 404s, github-readme-stats returns 503, uithub.com requires a login" width="860">
+<img src=".github/social/dead-tricks.png" alt="Social card: GitHub tricks that stopped working, struck through. The table below is the current list" width="860">
 
 </div>
 
 <br>
 
-| The tip you have seen | Reality, checked 31 August 2026 |
+| The tip you have seen | Reality, checked 4 September 2026 |
 |---|---|
 | `/stargazers` and `/watchers` | 404 to the public since 30 June 2026, REST endpoints included |
-| star-history chart embeds | An SVG reading "GitHub restricted access to star data" |
 | `github-readme-stats.vercel.app` | Unmaintained. The shared instance returns 503 |
-| `uithub.com` | 401 Unauthorized, even for a public repository |
 | `openrepowiki.xyz` | A GoDaddy for-sale page |
 | `talktogithub.com` | Redirects to a third-party ad campaign. Do not send it repository URLs |
 | "Octotree is free and open source" | The shipping extension is proprietary |
@@ -1505,7 +1503,7 @@ Six cards, in [`.github/social`](.github/social), sized for where they are going
 
 Found a mistake, or a trick that belongs here? [Open an issue](https://github.com/Amey-Thakur/GITHUB-TRICKS/issues/new), or read [CONTRIBUTING.md](CONTRIBUTING.md) first. A link to the source gets it in fastest, and reporting something that **stopped** working is the most valuable contribution here.
 
-Every entry was read against its primary source on 22 August 2026, and the entries that move fastest, the dead tricks table and the Copilot model retirements, were re-checked on 31 August 2026. Undocumented tricks are labelled, because they can change without notice.
+Every entry was read against its primary source on 22 August 2026, and the entries that move fastest, the dead tricks table and the runnable commands, were re-checked on 4 September 2026. Undocumented tricks are labelled, because they can change without notice.
 
 <br>
 
