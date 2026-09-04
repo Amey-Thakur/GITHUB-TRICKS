@@ -168,7 +168,7 @@ curl -X PURGE https://camo.githubusercontent.com/HASH
 <br>
 
 > [!IMPORTANT]
-> `/stargazers` now returns 404 to the public and `github-readme-stats` is unmaintained. [Everything else that quietly died](#dead-tricks).
+> `/stargazers` now returns 404 to the public, `github-readme-stats` is unmaintained, and `gh copilot suggest` was retired. [Everything else that quietly died](#dead-tricks).
 
 <br>
 
@@ -1448,7 +1448,7 @@ Every list still repeats these. None of them work.
 
 <div align="center">
 
-<img src=".github/social/dead-tricks.png" alt="Social card: GitHub tricks that stopped working, struck through. The table below is the current list" width="860">
+<img src=".github/social/dead-tricks.png" alt="Three dead tricks struck through: /stargazers 404s, github-readme-stats returns 503, gh copilot suggest was retired" width="860">
 
 </div>
 
