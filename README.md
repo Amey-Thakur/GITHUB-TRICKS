@@ -1090,7 +1090,7 @@ git bisect run ./test.sh          # exit 125 means "skip", not "bad"
 
 ### Run it, see the output
 
-Every command here was run against this repository on 4 September 2026, and the output is what came back.
+Every command here was run against this repository on 5 September 2026, and the output is what came back.
 
 **Score your own repository's community health.**
 
@@ -1151,11 +1151,11 @@ git ls-remote https://github.com/cli/cli 'refs/pull/*/merge' | wc -l
 ```
 
 ```
-5107
-178
+5109
+175
 ```
 
-Every closed pull request keeps its `/head` ref forever, while only 178 still have a usable `/merge` ref. That gap is why a merge ref you assumed exists so often does not.
+Every closed pull request keeps its `/head` ref forever, while only 175 still have a usable `/merge` ref. That gap is why a merge ref you assumed exists so often does not.
 
 <br>
 
@@ -1461,7 +1461,7 @@ Every list still repeats these. None of them work.
 
 <br>
 
-| The tip you have seen | Reality, checked 4 September 2026 |
+| The tip you have seen | Reality, checked 5 September 2026 |
 |---|---|
 | `/stargazers` and `/watchers` | 404 to the public since 30 June 2026, REST endpoints included |
 | `github-readme-stats.vercel.app` | Unmaintained. The shared instance returns 503 |
@@ -1510,7 +1510,7 @@ Six cards, in [`.github/social`](.github/social), sized for where they are going
 
 Found a mistake, or a trick that belongs here? [Open an issue](https://github.com/Amey-Thakur/GITHUB-TRICKS/issues/new), or read [CONTRIBUTING.md](CONTRIBUTING.md) first. A link to the source gets it in fastest, and reporting something that **stopped** working is the most valuable contribution here.
 
-Every entry was read against its primary source on 22 August 2026, and the entries that move fastest, the dead tricks table and the runnable commands, were re-checked on 4 September 2026. Undocumented tricks are labelled, because they can change without notice.
+Every entry was read against its primary source on 22 August 2026, and the entries that move fastest, the dead tricks table and the runnable commands, were re-checked on 5 September 2026. Undocumented tricks are labelled, because they can change without notice.
 
 <br>
 
