@@ -36,6 +36,13 @@
 
 ---
 
+> [!IMPORTANT]
+> **Both repositories in one document: [Git and GitHub Guide](Git%20and%20GitHub%20Guide.pdf)**
+>
+> A companion that indexes this page and [GIT-GUIDE](https://github.com/Amey-Thakur/GIT-GUIDE) together, so the tricks and the answers read as one path rather than two repositories you have to know about separately.
+>
+> [![Read it here](https://img.shields.io/badge/Read-in%20the%20browser-0969DA?style=flat&logo=readthedocs&logoColor=white)](Git%20and%20GitHub%20Guide.pdf) [![Download the PDF](https://img.shields.io/badge/Download-the%20PDF-181717?style=flat&logo=github&logoColor=white)](https://github.com/Amey-Thakur/GITHUB-TRICKS/raw/main/Git%20and%20GitHub%20Guide.pdf)
+
 ## Start here
 
 Ten that surprise almost everyone. Click any one and watch it work.
@@ -1512,16 +1519,7 @@ Every entry was read against its primary source on 22 August 2026, and the entri
 Git itself, command by command, is in [**GIT-GUIDE**](https://github.com/Amey-Thakur/GIT-GUIDE),
 where 47 of these answers are also searchable alongside a thousand others.
 
-</div>
-
-> [!IMPORTANT]
-> **Both repositories in one document: [Git and GitHub Guide](Git%20and%20GitHub%20Guide.pdf)**
->
-> A companion that indexes this page and [GIT-GUIDE](https://github.com/Amey-Thakur/GIT-GUIDE) together, so the tricks and the answers read as one path rather than two repositories you have to know about separately.
->
-> [![Read it here](https://img.shields.io/badge/Read-in%20the%20browser-0969DA?style=flat&logo=readthedocs&logoColor=white)](Git%20and%20GitHub%20Guide.pdf) [![Download the PDF](https://img.shields.io/badge/Download-the%20PDF-181717?style=flat&logo=github&logoColor=white)](https://github.com/Amey-Thakur/GITHUB-TRICKS/raw/main/Git%20and%20GitHub%20Guide.pdf)
-
-<div align="center">
+<br>
 
 **[Amey Thakur](https://github.com/Amey-Thakur)** &nbsp;·&nbsp; [MIT](LICENSE)
 
