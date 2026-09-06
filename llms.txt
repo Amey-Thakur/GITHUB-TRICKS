@@ -1,0 +1,26 @@
+# GitHub Tricks
+
+> Every GitHub feature, URL trick, keyboard shortcut, search qualifier,
+> Actions pattern and power-user tool worth knowing. Each one verified
+> against the source, with the trap that nobody else writes down.
+
+Licence: CC BY 4.0, attribution required
+Repository created: 23 August 2026
+Work dated: 4 September 2026
+
+## What is in this repository
+
+- Git and GitHub Guide.pdf
+
+## Subject terms
+
+awesome, awesome-list, cheatsheet, developer-tools, devtools,
+documentation, git, github, github-actions, github-search, github-tips,
+github-tricks, hacks, keyboard-shortcuts, open-source, productivity
+
+## Where this sits
+
+- This repository: https://github.com/Amey-Thakur/GITHUB-TRICKS
+- Project page: https://amey-thakur.github.io/
+- Author: https://github.com/Amey-Thakur
+- Research notes and reflections: https://amey-thakur.github.io/
