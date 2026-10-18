@@ -831,7 +831,7 @@ https://img.shields.io/endpoint?url=<ENCODED-JSON-URL>
 
 **Why your commit is missing from the graph.** The author email must be linked to your account, the repository must not be a fork, and the commit must be on the default branch or on `gh-pages`, which is the one special case nobody knows.
 
-**Why your stats card broke.** `github-readme-stats` is unmaintained and its shared instance returns 503. Generate cards inside your own Actions run instead. Badges go blank because shields.io runs on donated rate limit, and you can lend yours at [img.shields.io/github-auth](https://img.shields.io/github-auth).
+**Why your stats card broke.** `github-readme-stats` declares itself no longer maintained and names [GitHub Stats Extended](https://github.com/stats-organization/github-stats-extended) as its successor. Its shared instance has gone down for long stretches, so generate cards inside your own Actions run instead. Badges go blank because shields.io runs on donated rate limit, and you can lend yours at [img.shields.io/github-auth](https://img.shields.io/github-auth).
 
 **Why your snake stopped moving.** Sixty days of repository inactivity disables scheduled workflows.
 
@@ -1028,7 +1028,7 @@ git worktree add ../review-123 --detach FETCH_HEAD
 ```
 
 > [!NOTE]
-> `refs/pull/ID/head` always exists and is read-only. `refs/pull/ID/merge` is a *simulated* merge that GitHub creates only when it can: on `cli/cli` today there are 5,174 head refs and just 174 merge refs. Check with `git ls-remote origin 'refs/pull/123/*'` before relying on it.
+> `refs/pull/ID/head` always exists and is read-only. `refs/pull/ID/merge` is a *simulated* merge that GitHub creates only when it can: on `cli/cli` today there are 5,251 head refs and just 182 merge refs. Check with `git ls-remote origin 'refs/pull/123/*'` before relying on it.
 >
 > The catch-all refspec never shrinks, because GitHub does not delete PR refs when a pull request closes.
 
@@ -1090,7 +1090,7 @@ git bisect run ./test.sh          # exit 125 means "skip", not "bad"
 
 ### Run it, see the output
 
-Every command here was run against this repository on 25 September 2026, and the output is what came back.
+Every command here was run against this repository on 17 October 2026, and the output is what came back.
 
 **Score your own repository's community health.**
 
@@ -1151,11 +1151,11 @@ git ls-remote https://github.com/cli/cli 'refs/pull/*/merge' | wc -l
 ```
 
 ```
-5174
-174
+5251
+182
 ```
 
-Every closed pull request keeps its `/head` ref forever, while only 174 still have a usable `/merge` ref. That gap is why a merge ref you assumed exists so often does not.
+Every closed pull request keeps its `/head` ref forever, while only 182 still have a usable `/merge` ref. That gap is why a merge ref you assumed exists so often does not.
 
 <br>
 
@@ -1461,10 +1461,10 @@ Every list still repeats these. None of them work.
 
 <br>
 
-| The tip you have seen | Reality, checked 25 September 2026 |
+| The tip you have seen | Reality, checked 17 October 2026 |
 |---|---|
 | `/stargazers` and `/watchers` | 404 to the public since 30 June 2026, REST endpoints included |
-| `github-readme-stats.vercel.app` | Unmaintained. The shared instance returns 503 |
+| `github-readme-stats.vercel.app` | Its own README now says the project is no longer maintained, and names [GitHub Stats Extended](https://github.com/stats-organization/github-stats-extended) as the successor. The shared instance is serving again |
 | `openrepowiki.xyz` | A GoDaddy for-sale page |
 | `talktogithub.com` | Redirects to a third-party ad campaign. Do not send it repository URLs |
 | "Octotree is free and open source" | The shipping extension is proprietary |
@@ -1502,7 +1502,7 @@ Six cards, in [`.github/social`](.github/social), sized for where they are going
 <br>
 
 > [!TIP]
-> Posting one of these? The cards carry no counts and no dates, so they stay accurate however long they circulate.
+> Posting one of these? Five of the six carry no figures and stay accurate however long they circulate. The `dead-tricks` card is the exception: it prints dates, and a 503 that is no longer true, so it needs remaking before it goes out again.
 
 <br>
 
@@ -1510,7 +1510,7 @@ Six cards, in [`.github/social`](.github/social), sized for where they are going
 
 Found a mistake, or a trick that belongs here? [Open an issue](https://github.com/Amey-Thakur/GITHUB-TRICKS/issues/new), or read [CONTRIBUTING.md](CONTRIBUTING.md) first. A link to the source gets it in fastest, and reporting something that **stopped** working is the most valuable contribution here.
 
-Every entry was read against its primary source on 22 August 2026, and the entries that move fastest, the dead tricks table and the runnable commands, were re-checked on 25 September 2026. Undocumented tricks are labelled, because they can change without notice.
+Every entry was read against its primary source on 22 August 2026, and the entries that move fastest, the dead tricks table and the runnable commands, were re-checked on 17 October 2026. Undocumented tricks are labelled, because they can change without notice.
 
 <br>
 
