@@ -1226,7 +1226,7 @@ gh codespace create -r OWNER/REPO --idle-timeout 15m   # only settable at creati
 ## Copilot
 
 > [!IMPORTANT]
-> **This section ages faster than any other.** Copilot ships breaking changes monthly: premium requests became AI credits on 1 June 2026, `gh copilot suggest` died in October 2025, and the 1 September 2026 retirement of six models has now passed. Everything below was read against the docs on **22 August 2026**, and the model retirements were read again on **31 August 2026**. Check the date before you trust it.
+> **This section ages faster than any other.** Copilot ships breaking changes monthly: premium requests became AI credits on 1 June 2026, `gh copilot suggest` died in October 2025, and the six models retired on 1 September 2026 have been followed by two further waves. Everything below was read against the docs on **22 August 2026**. The model deprecations and the code review effort levels were re-read against the changelog on **17 October 2026**; nothing else in this section has been re-checked since August. Check the date before you trust it.
 
 ### Instruction files, and which ones actually apply
 
@@ -1300,7 +1300,7 @@ gh api --method POST /agents/repos/{owner}/{repo}/tasks -f prompt='Fix the flaky
 | It re-reviews after you push fixes | Only with "Review new pushes" enabled. Otherwise it reviews once and never looks again |
 | Review is covered by your Copilot bill | Since 1 June 2026 it also **burns Actions minutes** on private repositories. That is dual billing |
 
-Effort levels went generally available on 7 August 2026 and were renamed: **Lite** (the default) costs roughly $0.05 to $1 in credits per review, **Balanced** routes to a higher-reasoning model at roughly $0.25 to $5.
+Effort levels went generally available on 7 August 2026: **Lite** costs roughly $0.05 to $1 in credits per review, **Balanced** routes to a higher-reasoning model at roughly $0.25 to $5. **Balanced became the default on 28 September 2026**, so a repository that never chose a level is now paying the higher rate; an explicit choice of Lite was kept. Since 2 October a review can also be requested through the REST and GraphQL APIs, with the effort level set per request.
 
 ### The GitHub MCP server
 
@@ -1433,7 +1433,9 @@ api.enterprise.githubcopilot.com    Enterprise
 | `used_copilot_coding_agent` metrics field | Removed 1 August 2026 for `used_copilot_cloud_agent` |
 
 > [!CAUTION]
-> Six models were announced for retirement on **1 September 2026**, a date that has now passed, across every Copilot surface, chat, inline edits, ask and agent modes, and completions: Gemini 3.1 Pro, Claude Opus 4.5 and 4.6, Claude Sonnet 4.5 and 4.6, and Raptor Mini. Anything pinning a model by name, `model:` in a prompt file, `--model` in a script, an API call, **breaks on that date** rather than silently upgrading. The stated replacements are Gemini 3.6 Flash, Claude Opus 4.7, 4.8 or 5, Claude Sonnet 5, and MAI-Code-1-Flash. One exception: **Claude Sonnet 4.6 stays available to individual subscribers on annual plans**, so a colleague on a different plan is not evidence that your own pin still works.
+> Six models were announced for retirement on **1 September 2026**, a date that has now passed, across every Copilot surface, chat, inline edits, ask and agent modes, and completions: Gemini 3.1 Pro, Claude Opus 4.5 and 4.6, Claude Sonnet 4.5 and 4.6, and Raptor Mini. Anything pinning a model by name, `model:` in a prompt file, `--model` in a script, an API call, **breaks on that date** rather than silently upgrading. One exception: **Claude Sonnet 4.6 stayed available to individual subscribers on annual plans**, so a colleague on a different plan is not evidence that your own pin still works.
+>
+> **The replacements named at the time have themselves been retired**, which is the lesson here rather than the model list. Two further waves have landed. On **2 October 2026**: Gemini 3.5 Flash and Gemini 3.6 Flash, both to Gemini 3.8 Flash; Kimi K2.7 Code to Kimi K3; Claude Opus 4.7 to Claude Opus 5.5. Announced 15 October for **16 November 2026**: Claude Opus 4.8 and Claude Opus 5, both to Claude Opus 5.5, and GPT-5.6 Terra to GPT-6.1 Sol or GPT-6 Luna, with Claude Opus 4.8 again surviving for individual subscribers on annual plans. A replacement you pinned in September is already gone or going.
 
 <br>
 
