@@ -1226,7 +1226,7 @@ gh codespace create -r OWNER/REPO --idle-timeout 15m   # only settable at creati
 ## Copilot
 
 > [!IMPORTANT]
-> **This section ages faster than any other.** Copilot ships breaking changes monthly: premium requests became AI credits on 1 June 2026, `gh copilot suggest` died in October 2025, and the six models retired on 1 September 2026 have been followed by two further waves. Everything below was read against the docs on **22 August 2026**. The model deprecations and the code review effort levels were re-read against the changelog on **17 October 2026**; nothing else in this section has been re-checked since August. Check the date before you trust it.
+> **This section ages faster than any other.** Copilot ships breaking changes monthly: premium requests became AI credits on 1 June 2026, `gh copilot suggest` died in October 2025, and the six models retired on 1 September 2026 have been followed by two further waves. Everything below was read against the docs on **22 August 2026**. On **17 October 2026** the model deprecations, the code review effort levels, the AI credit figures and the CLI were re-read against the docs and the changelog; the instruction files, the cloud agent, the MCP server, Spaces, Agent Plugins and the self-hosted hostnames have not been re-checked since August. Check the date before you trust it.
 
 ### Instruction files, and which ones actually apply
 
@@ -1342,10 +1342,12 @@ npm install -g @github/copilot     # Node 22+
 
 Configuration lives in `~/.copilot`, relocatable with `COPILOT_HOME`. Put preferences in `settings.json`: `config.json` is auto-managed state and gets overwritten.
 
+Three things landed in October 2026. **Local sandboxing went generally available** on 7 October, so `/sandbox` is no longer a preview. **Dynamic workflows** arrived on 1 October in the CLI, the Copilot app and the SDK: a program that defines how a task is carried out, mixing scripted steps with agent steps, run in sequence or in parallel. And the CLI can now **discover local models**.
+
 ### What it costs now
 
 > [!WARNING]
-> **Premium requests no longer exist.** Since 1 June 2026 Copilot bills **AI credits** at 1 credit = $0.01. Pro is $10 base plus $5 flex, so 1,500 credits. The behaviour everyone relied on is gone: you can no longer exhaust your quota and keep working on an included model, because the free-model fallback was removed.
+> **Premium requests no longer exist.** Since 1 June 2026 Copilot bills **AI credits** at 1 credit = $0.01. Pro is $10 a month, which includes 1,000 base credits and a 500 credit flex allotment, 1,500 in all. The behaviour everyone relied on is gone: you can no longer exhaust your quota and keep working on an included model, because the free-model fallback was removed.
 
 Code completions and next edit suggestions cost **zero credits** and stay unlimited on every paid plan.
 
@@ -1431,6 +1433,11 @@ api.enterprise.githubcopilot.com    Enterprise
 | `mode:` in prompt-file frontmatter | Now `agent:`, which also gained a `plan` value |
 | `infer` in agent files | Retired for `disable-model-invocation`. Old files are silently ineffective |
 | `used_copilot_coding_agent` metrics field | Removed 1 August 2026 for `used_copilot_cloud_agent` |
+
+> [!WARNING]
+> **A fall in your agent metrics may be the instrumentation rather than your developers.** Several IDEs moved agent sessions onto the Copilot SDK without recording which IDE they came from, so usage metrics could not attribute them: most of that activity was left out of reports and some of it was counted as Copilot CLI activity. GitHub published the cause on 6 October 2026. The fix shipped first in Visual Studio Code and was still reaching other IDEs at that date, and only versions that use the SDK for agent mode are affected.
+
+<br>
 
 > [!CAUTION]
 > Six models were announced for retirement on **1 September 2026**, a date that has now passed, across every Copilot surface, chat, inline edits, ask and agent modes, and completions: Gemini 3.1 Pro, Claude Opus 4.5 and 4.6, Claude Sonnet 4.5 and 4.6, and Raptor Mini. Anything pinning a model by name, `model:` in a prompt file, `--model` in a script, an API call, **breaks on that date** rather than silently upgrading. One exception: **Claude Sonnet 4.6 stayed available to individual subscribers on annual plans**, so a colleague on a different plan is not evidence that your own pin still works.
