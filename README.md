@@ -1226,7 +1226,7 @@ gh codespace create -r OWNER/REPO --idle-timeout 15m   # only settable at creati
 ## Copilot
 
 > [!IMPORTANT]
-> **This section ages faster than any other.** Copilot ships breaking changes monthly: premium requests became AI credits on 1 June 2026, `gh copilot suggest` died in October 2025, and the six models retired on 1 September 2026 have been followed by two further waves. Everything below was read against the docs on **22 August 2026**. On **17 October 2026** the model deprecations, the code review effort levels, the AI credit figures and the CLI were re-read against the docs and the changelog; the instruction files, the cloud agent, the MCP server, Spaces, Agent Plugins and the self-hosted hostnames have not been re-checked since August. Check the date before you trust it.
+> **This section ages faster than any other.** Copilot ships breaking changes monthly: premium requests became AI credits on 1 June 2026, `gh copilot suggest` died in October 2025, and the six models retired on 1 September 2026 have been followed by two further waves. Everything below was read against the docs on **22 August 2026**. On **17 October 2026** the model deprecations, the code review effort levels, the AI credit figures, the CLI, the instruction files, the cloud agent and the MCP server were all re-read against the docs and the changelog; Spaces, Agent Plugins, the chat commands and the self-hosted hostnames have not been re-checked since August. Check the date before you trust it.
 
 ### Instruction files, and which ones actually apply
 
