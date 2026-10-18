@@ -1226,7 +1226,7 @@ gh codespace create -r OWNER/REPO --idle-timeout 15m   # only settable at creati
 ## Copilot
 
 > [!IMPORTANT]
-> **This section ages faster than any other.** Copilot ships breaking changes monthly: premium requests became AI credits on 1 June 2026, `gh copilot suggest` died in October 2025, and the six models retired on 1 September 2026 have been followed by two further waves. Everything below was read against the docs on **22 August 2026**. On **17 October 2026** the model deprecations, the code review effort levels, the AI credit figures, the CLI, the instruction files, the cloud agent and the MCP server were all re-read against the docs and the changelog; Spaces, Agent Plugins, the chat commands and the self-hosted hostnames have not been re-checked since August. Check the date before you trust it.
+> **This section ages faster than any other.** Copilot ships breaking changes monthly: premium requests became AI credits on 1 June 2026, `gh copilot suggest` died in October 2025, and the six models retired on 1 September 2026 have been followed by two further waves. Everything below was read against the docs on **22 August 2026**. Every part of it was re-read against the docs and the changelog on **17 October 2026**. Check the date before you trust it.
 
 ### Instruction files, and which ones actually apply
 
@@ -1357,13 +1357,13 @@ Code completions and next edit suggestions cost **zero credits** and stay unlimi
 ### Chat, in the editor
 
 ```
-/clear  /explain  /fix  /fixTestFailure  /help  /new  /tests
+/clear  /doc  /explain  /fix  /fixTestFailure  /help  /new  /tests
 @azure  @github  @terminal  @vscode
 #block  #class  #file  #selection  #sym  #terminalLastCommand
 ```
 
 > [!NOTE]
-> `@workspace` and `#codebase` have quietly dropped out of GitHub's official cheat sheet. Chat went agentic, so the agent searches the codebase itself rather than waiting to be pointed at it. `/doc` is gone from the list too.
+> `@workspace` and `#codebase` have quietly dropped out of GitHub's official cheat sheet. Chat went agentic, so the agent searches the codebase itself rather than waiting to be pointed at it. `/doc` left that list and has since returned, so it is above again. `#terminalLastCommand` is not on the cheat sheet, and was not in the VS Code reference either, so treat it as undocumented rather than guaranteed.
 
 ### Custom agents and prompt files
 
