@@ -149,7 +149,7 @@ https://github.com/Amey-Thakur.keys
 is:issue is:open -linked:pr
 ```
 
-[Open it on cli/cli](https://github.com/cli/cli/issues?q=is%3Aissue+is%3Aopen+-linked%3Apr) &nbsp;·&nbsp; 400+ unclaimed issues right now
+[Open it on cli/cli](https://github.com/cli/cli/issues?q=is%3Aissue+is%3Aopen+-linked%3Apr) &nbsp;·&nbsp; 800+ unclaimed issues right now
 
 <br>
 
@@ -508,6 +508,8 @@ Set a repository variable `ACTIONS_STEP_DEBUG` to `true` for debug logs without 
 
 > [!CAUTION]
 > **`pull_request_target` plus a checkout of the pull request head.** The job runs with your secrets and a write token, then executes a stranger's `postinstall` script. Nothing in the diff has to look malicious.
+>
+> From **2 December 2026** GitHub Actions blocks `pull_request_target` by default in every public repository, unless an Actions event policy allows it. That closes the default case, not the one you re-enable.
 >
 > **`${{ github.event.* }}` inside `run:`.** Substitution happens before the shell ever sees the line, so quoting does not save you.
 
@@ -1028,7 +1030,7 @@ git worktree add ../review-123 --detach FETCH_HEAD
 ```
 
 > [!NOTE]
-> `refs/pull/ID/head` always exists and is read-only. `refs/pull/ID/merge` is a *simulated* merge that GitHub creates only when it can: on `cli/cli` today there are 5,292 head refs and just 164 merge refs. Check with `git ls-remote origin 'refs/pull/123/*'` before relying on it.
+> `refs/pull/ID/head` always exists and is read-only. `refs/pull/ID/merge` is a *simulated* merge that GitHub creates only when it can: on `cli/cli` today there are 5,308 head refs and just 171 merge refs. Check with `git ls-remote origin 'refs/pull/123/*'` before relying on it.
 >
 > The catch-all refspec never shrinks, because GitHub does not delete PR refs when a pull request closes.
 
@@ -1090,7 +1092,7 @@ git bisect run ./test.sh          # exit 125 means "skip", not "bad"
 
 ### Run it, see the output
 
-Every command here was run against this repository on 1 November 2026, and the output is what came back.
+Every command here was run against this repository on 3 November 2026, and the output is what came back.
 
 **Score your own repository's community health.**
 
@@ -1155,7 +1157,7 @@ git ls-remote https://github.com/cli/cli 'refs/pull/*/merge' | wc -l
 164
 ```
 
-Every closed pull request keeps its `/head` ref forever, while only 164 still have a usable `/merge` ref. That gap is why a merge ref you assumed exists so often does not.
+Every closed pull request keeps its `/head` ref forever, while only 171 still have a usable `/merge` ref. That gap is why a merge ref you assumed exists so often does not.
 
 <br>
 
@@ -1226,7 +1228,7 @@ gh codespace create -r OWNER/REPO --idle-timeout 15m   # only settable at creati
 ## Copilot
 
 > [!IMPORTANT]
-> **This section ages faster than any other.** Copilot ships breaking changes monthly: premium requests became AI credits on 1 June 2026, `gh copilot suggest` died in October 2025, and the six models retired on 1 September 2026 have been followed by two further waves. Everything below was read against the docs on **22 August 2026**. Every part of it was read against the docs and the changelog on **17 October 2026**, and the model deprecations were re-read on **1 November 2026**. GitHub published 32 more Copilot entries in between, most of them at Universe on 28 October, so treat everything here except the model list as two weeks behind. Check the date before you trust it.
+> **This section ages faster than any other.** Copilot ships breaking changes monthly: premium requests became AI credits on 1 June 2026, `gh copilot suggest` died in October 2025, and the six models retired on 1 September 2026 have been followed by three further waves. Everything below was read against the docs on **22 August 2026**. Every part of it was read against the docs and the changelog on **17 October 2026**, and the model deprecations were re-read on **3 November 2026**, when the changelog carried no new wave. GitHub published 32 more Copilot entries in between, most of them at Universe on 28 October, so treat everything here except the model list as two weeks behind. Check the date before you trust it.
 
 ### Instruction files, and which ones actually apply
 
@@ -1470,10 +1472,10 @@ Every list still repeats these. None of them work.
 
 <br>
 
-| The tip you have seen | Reality, checked 1 November 2026 |
+| The tip you have seen | Reality, checked 3 November 2026 |
 |---|---|
 | `/stargazers` and `/watchers` | 404 to the public since 30 June 2026, REST endpoints included |
-| `github-readme-stats.vercel.app` | Its own README now says the project is no longer maintained, and names [GitHub Stats Extended](https://github.com/stats-organization/github-stats-extended) as the successor. The shared instance flaps: 503 for months, serving on 17 October, back to 503 on 1 November |
+| `github-readme-stats.vercel.app` | Its own README now says the project is no longer maintained, and names [GitHub Stats Extended](https://github.com/stats-organization/github-stats-extended) as the successor. The shared instance flaps: 503 for months, serving on 17 October, back to 503 on 1 November and still 503 on 3 November |
 | `openrepowiki.xyz` | A GoDaddy for-sale page |
 | `talktogithub.com` | Redirects to a third-party ad campaign. Do not send it repository URLs |
 | "Octotree is free and open source" | The shipping extension is proprietary |
@@ -1519,7 +1521,7 @@ Six cards, in [`.github/social`](.github/social), sized for where they are going
 
 Found a mistake, or a trick that belongs here? [Open an issue](https://github.com/Amey-Thakur/GITHUB-TRICKS/issues/new), or read [CONTRIBUTING.md](CONTRIBUTING.md) first. A link to the source gets it in fastest, and reporting something that **stopped** working is the most valuable contribution here.
 
-Every entry was read against its primary source on 22 August 2026, and the entries that move fastest, the dead tricks table and the runnable commands, were re-checked on 1 November 2026. Undocumented tricks are labelled, because they can change without notice.
+Every entry was read against its primary source on 22 August 2026, and the entries that move fastest, the dead tricks table and the runnable commands, were re-checked on 3 November 2026. Undocumented tricks are labelled, because they can change without notice.
 
 <br>
 
